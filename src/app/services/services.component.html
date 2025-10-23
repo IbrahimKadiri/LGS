@@ -1,0 +1,53 @@
+<section id="services" class="py-24 bg-gray-100">
+  <div class="container mx-auto px-6">
+
+    <!-- Texte de section -->
+    <div class="max-w-3xl mx-auto text-center mb-12 services-header">
+      <h2 class="text-sm font-semibold text-gray-900 uppercase mb-2">Nos Services</h2>
+      <p class="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-4">
+        Simplifiez la gestion de votre personnel
+      </p>
+      <p class="text-gray-600 text-base sm:text-lg italic">
+        Nous mettons à disposition du personnel qualifié et professionnel pour l’HORECA et l’événementiel.
+      </p>
+    </div>
+
+    <!-- Grille responsive -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+      <div *ngFor="let service of services" class="flex justify-center service-card">
+
+        <div
+          class="relative w-full max-w-[400px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-xl cursor-pointer group"
+          [ngStyle]="{'background-image': 'url(' + service.image + ')', 'background-size': 'cover', 'background-position': 'center'}">
+
+          <!-- Overlay sombre léger pour que la deco ressorte -->
+          <div class="absolute inset-0 bg-black/40 z-10"></div>
+
+          <!-- Décorations visibles -->
+          <div class="absolute inset-0 z-20 overflow-hidden">
+            <div class="absolute -bottom-16 -left-16 w-56 h-56 rounded-full bg-gradient-to-tr from-white/40 to-transparent blur-3xl decorative"></div>
+            <div class="absolute top-8 left-8 w-20 h-20 rounded-full bg-white/30 blur-xl decorative"></div>
+            <div class="absolute bottom-12 right-12 w-16 h-16 rounded-full bg-white/30 blur-lg decorative"></div>
+          </div>
+
+          <!-- Contenu principal centré -->
+          <div class="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-6">
+            <h3 class="mb-4 text-3xl font-medium uppercase bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
+              {{ service.title }}
+            </h3>
+            <p class="text-gray-200 text-sm leading-relaxed mb-6">
+              {{ service.desc }}
+            </p>
+            <a [href]="service.link"
+               class="rounded-md border border-white px-10 py-3 font-meduim uppercase text-white hover:bg-white hover:text-black">
+              En savoir plus
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

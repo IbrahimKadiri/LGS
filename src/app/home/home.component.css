@@ -1,0 +1,16 @@
+.person {
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.head {
+  border-radius: 50%;
+}
+
+.torso {
+  border-radius: 0.25rem;
+}

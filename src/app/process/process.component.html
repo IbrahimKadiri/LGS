@@ -1,0 +1,210 @@
+<section id="process" class="relative py-20 px-6 overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto">
+    <!-- Texte de section -->
+    <div id="process-label" class="max-w-3xl mx-auto text-center mb-12 services-header">
+      <h2 class="text-sm font-semibold text-gray-900 uppercase mb-2">Notre méthodologie</h2>
+      <p class="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-4">
+        Notre processus étape par étape
+      </p>
+      <p class="text-gray-600 text-base sm:text-lg italic">
+        Un accompagnement fluide, clair et structuré à chaque étape de votre projet.
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="flex justify-between items-center max-w-4xl mx-auto mb-12 relative">
+      <div class="absolute top-1/2 left-0 right-0 h-[2px] bg-gray-600 transform -translate-y-1/2"></div>
+      <div
+        *ngFor="let step of steps; let i = index"
+        class="relative z-10 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300"
+        [ngClass]="{
+          'bg-black text-white shadow-lg scale-110': i === currentIndex,
+          'bg-white border-2 border-black text-black': i !== currentIndex
+        }"
+      >
+        <span class="font-semibold">{{ i + 1 }}</span>
+      </div>
+    </div>
+
+    <!-- Swiper Container -->
+    <div class="relative max-w-5xl mx-auto">
+      <div class="swiper process-swiper">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide flex justify-center items-center"
+            *ngFor="let step of steps"
+          >
+            <div
+              class="process-card bg-white rounded-3xl shadow-lg border border-black p-10 max-w-3xl transition-all duration-500"
+            >
+              <h3 class="text-2xl font-semibold text-black mb-4">
+                {{ step.title }}
+              </h3>
+              <p class="text-gray-700 text-base leading-relaxed">
+                {{ step.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="about" class="relative py-20 px-6 bg-[#0c2549] overflow-visible">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:space-x-12">
+
+    <!-- Texte -->
+    <div class="md:w-1/2 text-white">
+      <!-- Label  -->
+    <div id="services-label" class="flex items-center mb-16">
+      <span class="label-number text-white text-lg sm:text-xl font-semibold">03</span>
+      <div class="label-dot mx-4 bg-white rounded-full w-1 h-1"></div>
+      <span class="label-text text-white text-lg sm:text-xl font-semibold">Qui sommes-nous ?</span>
+    </div>
+
+      <!-- Titre -->
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-prata font-bold mb-6 leading-tight relative">
+        Notre histoire<br>
+        <span class="absolute left-0 -bottom-2 w-20 h-1 bg-white rounded-full"></span>
+      </h2>
+
+      <!-- Texte -->
+      <p class="text-white font-prata text-sm sm:text-base md:text-base mb-4 leading-relaxed">
+        Depuis notre création, notre objectif est de transformer chaque événement en une expérience inoubliable. 
+        Avec passion et expertise, nous accompagnons nos clients à chaque étape.
+      </p>
+      <p class="text-white text-sm sm:text-base md:text-base leading-relaxed">
+        Notre équipe combine professionnalisme et créativité pour offrir des solutions sur mesure, adaptées aux besoins uniques de chaque projet.
+      </p>
+    </div>
+
+    <!-- Illustration / Graphique -->
+    <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center">
+      <div class="relative w-full max-w-md">
+        <!-- Exemple d'élément graphique original -->
+        <div class="bg-white rounded-xl shadow-lg p-6 flex items-center justify-center h-64">
+          <svg class="w-24 h-24 text-[#0c2549]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section id="testimonials" class="relative py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Label  -->
+  <div id="services-label" class="flex items-center mb-16">
+    <span class="label-number text-[#0c2549] text-lg sm:text-xl font-semibold">04</span>
+    <div class="label-dot mx-4 bg-[#0c2549] rounded-full w-1 h-1"></div>
+    <span class="label-text text-[#0c2549] text-lg sm:text-xl font-semibold">Témoignages</span>
+  </div>
+
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-prata font-bold text-[#0c2549] leading-tight">
+        Ce que disent nos clients
+      </h2>
+      <p class="text-gray-600 font-prata mt-3 max-w-2xl mx-auto text-base">
+        Découvrez les expériences de nos clients qui ont travaillé avec nous.
+      </p>
+    </div>
+
+    <!-- Carousel simple -->
+    <div class="flex overflow-x-auto space-x-6 py-6">
+      <!-- Testimonial 1 -->
+      <div class="flex-shrink-0 w-80 bg-[#f2f5fc] rounded-xl p-6 shadow-md border border-[#dbe2f0]">
+        <p class="text-gray-700 text-sm leading-relaxed mb-4">
+          "Une équipe réactive et professionnelle ! Notre événement a été un succès grâce à leur accompagnement."
+        </p>
+        <h4 class="text-[#0c2549] font-semibold">Marie D.</h4>
+        <span class="text-gray-500 text-xs">CEO, EventCorp</span>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="flex-shrink-0 w-80 bg-[#f2f5fc] rounded-xl p-6 shadow-md border border-[#dbe2f0]">
+        <p class="text-gray-700 text-sm leading-relaxed mb-4">
+          "Très professionnels et attentifs aux détails. Je recommande vivement leurs services."
+        </p>
+        <h4 class="text-[#0c2549] font-semibold">Julien R.</h4>
+        <span class="text-gray-500 text-xs">Directeur, GalaPro</span>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="flex-shrink-0 w-80 bg-[#f2f5fc] rounded-xl p-6 shadow-md border border-[#dbe2f0]">
+        <p class="text-gray-700 text-sm leading-relaxed mb-4">
+          "Une expérience sans stress et un suivi impeccable du début à la fin."
+        </p>
+        <h4 class="text-[#0c2549] font-semibold">Sophie L.</h4>
+        <span class="text-gray-500 text-xs">Manager, ExpoEvents</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section id="contact" class="relative py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Label  -->
+  <div id="services-label" class="flex items-center mb-16">
+    <span class="label-number text-[#0c2549] text-lg sm:text-xl font-semibold">05</span>
+    <div class="label-dot mx-4 bg-[#0c2549] rounded-full w-1 h-1"></div>
+    <span class="label-text text-[#0c2549] text-lg sm:text-xl font-semibold">Contact</span>
+  </div>
+
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-prata font-bold text-[#0c2549] leading-tight">
+        Entrons en contact
+      </h2>
+      <p class="text-gray-600 font-prata mt-3 max-w-2xl mx-auto text-base">
+        Remplissez le formulaire ci-dessous ou venez nous rencontrer.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Formulaire -->
+      <form class="space-y-4 bg-[#f2f5fc] p-6 rounded-xl shadow-md border border-[#dbe2f0]">
+        <div>
+          <label class="block text-[#0c2549] font-semibold mb-1">Nom</label>
+          <input type="text" class="w-full p-3 rounded border border-gray-300" placeholder="Votre nom" required>
+        </div>
+        <div>
+          <label class="block text-[#0c2549] font-semibold mb-1">Email</label>
+          <input type="email" class="w-full p-3 rounded border border-gray-300" placeholder="Votre email" required>
+        </div>
+        <div>
+          <label class="block text-[#0c2549] font-semibold mb-1">Message</label>
+          <textarea class="w-full p-3 rounded border border-gray-300" rows="5" placeholder="Votre message" required></textarea>
+        </div>
+        <button type="submit" class="bg-[#0c2549] text-white font-semibold px-6 py-3 rounded hover:bg-[#3a4a7a] transition-colors">
+          Envoyer
+        </button>
+      </form>
+
+      <!-- Map -->
+      <div class="rounded-xl overflow-hidden shadow-md border border-[#dbe2f0] h-96">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!..." 
+          class="w-full h-full border-0" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+<footer id="footer" class="bg-[#0c2549] text-white py-12">
+  <div class="max-w-6xl mx-auto text-center">
+    <p class="mb-4">&copy; 2025 VotreEntreprise. Tous droits réservés.</p>
+    <ul class="flex justify-center space-x-6">
+      <li><a href="#" class="hover:text-gray-300">Instagram</a></li>
+      <li><a href="#" class="hover:text-gray-300">Facebook</a></li>
+      <li><a href="#" class="hover:text-gray-300">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>

@@ -1,0 +1,57 @@
+<nav #navbar
+  class="absolute top-0 left-0 w-full z-50 flex flex-row-reverse items-center justify-between px-2 sm:justify-around sm:flex-row bg-transparent"
+>
+  <!-- Mobile menu button -->
+  <div (click)="toggleMobileMenu()" class="sm:hidden">
+    <button class="flex items-center p-3 text-white navbar-burger">
+      <svg class="block w-10 h-10 fill-current" fill="none" stroke="currentColor" stroke-width="1.5"
+           viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Menu desktop gauche -->
+  <ul class="navbar-left hidden sm:flex sm:mx-auto sm:items-center sm:w-auto sm:space-x-6 text-white text-sm">
+    <li class="group relative">
+      <a class="font-light uppercase cursor-pointer navbar-link">Accueil</a>
+      <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
+    </li>
+    <li class="group relative">
+      <a class="font-light uppercase cursor-pointer navbar-link">Services</a>
+      <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
+    </li>
+    <li class="group relative">
+      <a class="font-light uppercase cursor-pointer navbar-link">Process</a>
+      <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
+    </li>
+  </ul>
+
+ <img #logo
+  class="w-32 sm:w-23 md:w-32 lg:w-38 h-auto cursor-pointer logo-white" 
+  src="assets/images/LGS.svg" 
+  alt="logo brand">
+
+  <!-- Menu desktop droite -->
+  <ul class="navbar-right hidden sm:flex sm:mx-auto sm:items-center sm:w-auto sm:space-x-6 text-white text-sm">
+    <li class="group relative">
+      <a class="font-light uppercase cursor-pointer navbar-link">À propos</a>
+      <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
+    </li>
+    <li class="group relative">
+      <a class="font-light uppercase cursor-pointer navbar-link">Témoignages</a>
+      <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
+    </li>
+    <li class="group relative">
+      <a class="font-light uppercase cursor-pointer navbar-link">Contact</a>
+      <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
+    </li>
+  </ul>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div *ngIf="ismobileMenuOpen" class="relative z-50 navbar-menu">
+  <nav class="fixed top-0 bottom-0 left-0 flex flex-col w-full px-6 py-6 overflow-y-auto bg-[#0c2549] border-r">
+    <!-- close button & menu items ici (inchangé) -->
+  </nav>
+</div>
