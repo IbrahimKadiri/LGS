@@ -22,29 +22,6 @@ img.logo-white {
   transition: background-color 0.4s ease, opacity 0.3s ease;
 }
 
-.process-swiper {
-  width: 100%;
-  height: 70vh;
-  overflow: hidden;
+.input-style {
+  @apply bg-transparent border-b border-[#1a1a1a] focus:border-[#8a7d6a] outline-none py-3 text-[#f0ede8] text-sm transition;
 }
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.process-card {
-  width: 80%;
-  height: auto;
-  min-height: 400px;
-}
-
-.swiper {
-  overflow: visible !important;
-}
-
-.swiper-wrapper {
-  align-items: center;
-}
-

@@ -1,67 +1,53 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { animateProcess } from '../../animations';
 import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit  } from '@angular/core';
+import { gsap } from 'gsap';
+import { Observer } from 'gsap/Observer';
+import { animateContact, animateFooter, animateHistoire, animateProcess, animateTestimonials } from '../../animations';
 
-import gsap from 'gsap';
-import Swiper from 'swiper';
-import { Navigation, Pagination, Mousewheel } from 'swiper/modules';
-
-Swiper.use([Navigation, Pagination, Mousewheel]);
+gsap.registerPlugin(Observer);
 
 @Component({
-  selector: 'app-process',
   imports: [CommonModule],
+  selector: 'app-process',
   templateUrl: './process.component.html',
-  styleUrl: './process.component.css'
+  styleUrls: ['./process.component.css']
 })
-export class ProcessComponent implements AfterViewInit {
-
- currentIndex = 0;
-
+export class ProcessComponent implements AfterViewInit  {
   steps = [
     {
+      id: 1,
       title: 'Sélection du personnel',
-      description:
-        'Identification des profils les plus adaptés à vos besoins événementiels et de restauration.',
+      description: 'Identification des profils adaptés à vos besoins événementiels et restauration.'
     },
     {
+      id: 2,
       title: 'Formation & préparation',
-      description:
-        'Chaque membre reçoit des instructions précises pour assurer une prestation irréprochable.',
+      description: 'Nos équipes reçoivent toutes les instructions spécifiques à votre événement.'
     },
     {
+      id: 3,
       title: 'Déploiement sur site',
-      description:
-        'Nos équipes arrivent ponctuellement, prêtes à offrir un service professionnel et efficace.',
+      description: 'Nos professionnels arrivent ponctuellement et prennent en charge les missions assignées.'
     },
     {
+      id: 4,
       title: 'Évaluation & feedback',
-      description:
-        'Recueil de votre retour d’expérience pour optimiser nos futures collaborations.',
+      description: 'Recueil de votre feedback pour améliorer nos prestations futures.'
     }
-  ]
+  ];
 
- ngAfterViewInit(): void {
-    const swiper = new Swiper('.process-swiper', {
-      direction: 'horizontal',
-      slidesPerView: 1,
-      spaceBetween: 60,
-      grabCursor: true,
-      mousewheel: true,
-      centeredSlides: true,
-      on: {
-        slideChange: () => {
-          this.currentIndex = swiper.activeIndex;
-          this.animateCard();
-        },
-      },
-    });
-  }
-  animateCard() {
-    gsap.fromTo(
-      '.process-card',
-      { opacity: 0, y: 30, scale: 0.95 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power3.out' }
-    );
-  }
+ testimonials = [
+  { text: "Un accompagnement fluide et professionnel. Je recommande vivement !", name: "Claire D.", role: "CEO, StartupX" },
+  { text: "Le suivi était impeccable et l'équipe très réactive.", name: "Marc L.", role: "Event Manager" },
+  { text: "Tout s'est passé exactement comme prévu, sans surprise.", name: "Sophie R.", role: "Directrice Marketing" },
+  { text: "Une expérience simple, rapide et efficace.", name: "Julien T.", role: "Product Owner" },
+];
+  ngAfterViewInit(): void {
+      animateProcess();
+      animateTestimonials();
+      animateHistoire();
+      animateContact();
+      animateFooter();
+    };
+
 }

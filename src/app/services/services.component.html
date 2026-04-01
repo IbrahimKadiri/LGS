@@ -1,7 +1,8 @@
-<section id="services" class="py-24 bg-gray-100">
+<!--<section id="services" class="py-24 bg-gray-100">
+
   <div class="container mx-auto px-6">
 
-    <!-- Texte de section -->
+    
     <div class="max-w-3xl mx-auto text-center mb-12 services-header">
       <h2 class="text-sm font-semibold text-gray-900 uppercase mb-2">Nos Services</h2>
       <p class="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-4">
@@ -12,7 +13,7 @@
       </p>
     </div>
 
-    <!-- Grille responsive -->
+   
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
       <div *ngFor="let service of services" class="flex justify-center service-card">
 
@@ -20,17 +21,17 @@
           class="relative w-full max-w-[400px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-xl cursor-pointer group"
           [ngStyle]="{'background-image': 'url(' + service.image + ')', 'background-size': 'cover', 'background-position': 'center'}">
 
-          <!-- Overlay sombre léger pour que la deco ressorte -->
+         
           <div class="absolute inset-0 bg-black/40 z-10"></div>
 
-          <!-- Décorations visibles -->
+         
           <div class="absolute inset-0 z-20 overflow-hidden">
             <div class="absolute -bottom-16 -left-16 w-56 h-56 rounded-full bg-gradient-to-tr from-white/40 to-transparent blur-3xl decorative"></div>
             <div class="absolute top-8 left-8 w-20 h-20 rounded-full bg-white/30 blur-xl decorative"></div>
             <div class="absolute bottom-12 right-12 w-16 h-16 rounded-full bg-white/30 blur-lg decorative"></div>
           </div>
 
-          <!-- Contenu principal centré -->
+         
           <div class="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-6">
             <h3 class="mb-4 text-3xl font-medium uppercase bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
               {{ service.title }}
@@ -47,6 +48,74 @@
         </div>
 
       </div>
+    </div>
+
+  </div>
+</section>
+-->
+
+<section id="services" class="py-24 bg-[#0a0a0a]">
+  <div class="container mx-auto px-6">
+
+    <!-- Intro -->
+    <div class="services-header max-w-3xl mx-auto text-center mb-12">
+      <div class="text-[#8a7d6a] uppercase text-sm tracking-widest mb-2">Nos Services</div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-light text-[#f0ede8] mb-4">
+        Simplifiez la gestion de votre personnel
+      </h2>
+      <p class="text-[#9a9088] text-base sm:text-lg italic">
+        Nous mettons à disposition du personnel qualifié et professionnel pour l’HORECA et l’événementiel.
+      </p>
+    </div>
+
+    <!-- Grid Services -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      <div *ngFor="let service of services" class="service-card relative h-72 overflow-hidden rounded-3xl shadow-lg">
+
+        <!-- Background image -->
+        <div
+          class="absolute inset-0 bg-center bg-cover"
+          [ngStyle]="{'background-image': 'url(' + service.image + ')'}">
+        </div>
+
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/50"></div>
+
+        <!-- Content -->
+        <div class="absolute inset-0 p-6 flex flex-col justify-end text-left">
+          <h3 class="text-[#f0ede8] text-2xl font-light mb-2 uppercase">{{ service.title }}</h3>
+          <p class="text-[#f0ede8]/90 text-sm mb-4 italic">{{ service.desc }}</p>
+           <a [href]="service.link"
+               class="rounded-lg border border-white bg-[#0a0a0a] px-10 py-3 font-meduim uppercase text-white text-center hover:bg-gray-200 hover:text-black focus:bg-gray-200 focus:text-black
+          active:bg-gray-200 active:text-black">
+              En savoir plus
+            </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="bg-[#0d0d0d] py-16">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 text-center gap-6 sm:gap-0">
+    
+    <!-- Événements -->
+    <div class="stat border-b sm:border-b-0 sm:border-r border-[#1a1a1a] pb-6 sm:pb-0 sm:pr-6">
+      <div #events class="text-4xl sm:text-5xl font-light text-[#f0ede8]">0</div>
+      <div class="text-xs sm:text-sm uppercase text-[#8a7d6a] tracking-widest mt-2">Événements</div>
+    </div>
+
+    <!-- Profils actifs -->
+    <div class="stat border-b sm:border-b-0 sm:border-r border-[#1a1a1a] pb-6 sm:pb-0 sm:px-6">
+      <div #profiles class="text-4xl sm:text-5xl font-light text-[#f0ede8]">0</div>
+      <div class="text-xs sm:text-sm uppercase text-[#8a7d6a] tracking-widest mt-2">Profils actifs</div>
+    </div>
+
+    <!-- Délai moyen -->
+    <div class="stat sm:pl-6">
+      <div #delay class="text-4xl sm:text-5xl font-light text-[#f0ede8]">0</div>
+      <div class="text-xs sm:text-sm uppercase text-[#8a7d6a] tracking-widest mt-2">Délai moyen (h)</div>
     </div>
 
   </div>

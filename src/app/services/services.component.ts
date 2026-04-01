@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { animateServices } from '../../animations';
 import { CommonModule } from '@angular/common';
 
@@ -63,10 +63,42 @@ export class ServicesComponent implements AfterViewInit {
     link: '#service6-details'
   },
 ];
-
-
+  
+  @ViewChild('events') events!: ElementRef;
+  @ViewChild('profiles') profiles!: ElementRef;
+  @ViewChild('delay') delay!: ElementRef;
 
   ngAfterViewInit(): void {
     animateServices();
+    const statsSection = this.events.nativeElement.closest('section');
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        this.simpleCount(this.events.nativeElement, 500, true);
+        this.simpleCount(this.profiles.nativeElement, 200, true);
+        this.simpleCount(this.delay.nativeElement, 24, false);
+        observer.disconnect();
+      }
+    }, { threshold: 0.3 });
+
+    observer.observe(statsSection);
   }
+   
+  /**
+ * Compteur simple avec option pour ajouter le '+'
+ */
+
+  simpleCount(element: HTMLElement, target: number, addPlus: boolean, duration = 2000) {
+  let current = 0;
+  const step = Math.ceil(target / (duration / 50));
+  const interval = setInterval(() => {
+    current += step;
+    if (current >= target) {
+      element.textContent = addPlus ? `${target}+` : `${target}`;
+      clearInterval(interval);
+    } else {
+      element.textContent = addPlus ? `${current}+` : `${current}`;
+    }
+  }, 50);
+}
 }
