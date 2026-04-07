@@ -85,7 +85,7 @@
         <div class="absolute inset-0 p-6 flex flex-col justify-end text-left">
           <h3 class="text-[#f0ede8] text-2xl font-light mb-2 uppercase">{{ service.title }}</h3>
           <p class="text-[#f0ede8]/90 text-sm mb-4 italic">{{ service.desc }}</p>
-           <a [href]="service.link"
+           <a [routerLink]="['/services', service.link]" 
                class="rounded-lg border border-white bg-[#0a0a0a] px-10 py-3 font-meduim uppercase text-white text-center hover:bg-gray-200 hover:text-black focus:bg-gray-200 focus:text-black
           active:bg-gray-200 active:text-black">
               En savoir plus

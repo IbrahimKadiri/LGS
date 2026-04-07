@@ -12,4 +12,14 @@ export class FooterComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     animateFooter();
   }
+
+  scrollToSection(id: string) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
 }

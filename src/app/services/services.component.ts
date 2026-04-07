@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { animateServices } from '../../animations';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 interface Service {
   id: number,
@@ -13,7 +14,7 @@ interface Service {
 
 @Component({
   selector: 'app-services',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './services.component.html',
   styleUrl: './services.component.css'
 })
@@ -25,42 +26,42 @@ export class ServicesComponent implements AfterViewInit {
     title: 'Salle',
     desc: 'Personnel de salle expérimenté pour vos réceptions et événements.',
     image: 'assets/images/carré-salle.jpeg',
-    link: '#service1-details'
+    link: 'salle'
   },
   {
     id: 1,
     title: 'Cuisine',
     desc: 'Cuisiniers, commis et chefs qualifiés pour vos prestations traiteur.',
     image: 'assets/images/carré-cuisine.jpeg',
-    link: '#service2-details'
+    link: 'cuisine'
   },
   {
     id: 2,
     title: 'Accueil',
     desc: 'Personnel de salle expérimenté pour vos réceptions et événements.',
     image: 'assets/images/carré-acceuil.png',
-    link: '#service3-details'
+    link: 'accueil'
   },
   {
     id: 3,
     title: 'Prestation',
     desc: 'Gestion complète de vos prestations événementielles et logistiques.',
     image: 'assets/images/carré-prestation.png',
-    link: '#service4-details'
+    link: 'prestation'
   },
   {
     id: 4,
     title: 'Logistique',
     desc: 'Transport, montage et coordination logistique de vos événements.',
     image: 'assets/images/carré-logistique.png',
-    link: '#service5-details'
+    link: 'logistique'
   },
   {
     id: 5,
     title: 'Partenariat',
     desc: 'Des collaborations solides et durables avec nos partenaires.',
     image: 'assets/images/carré-partenariat.png',
-    link: '#service6-details'
+    link: 'partenariat'
   },
 ];
   

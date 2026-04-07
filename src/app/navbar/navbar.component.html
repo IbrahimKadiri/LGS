@@ -50,8 +50,35 @@
 </nav>
 
 <!-- Mobile menu overlay -->
-<div *ngIf="ismobileMenuOpen" class="relative z-50 navbar-menu">
-  <nav class="fixed top-0 bottom-0 left-0 flex flex-col w-full px-6 py-6 overflow-y-auto bg-[#0c2549] border-r">
-    <!-- close button & menu items ici (inchangé) -->
+<div *ngIf="ismobileMenuOpen" class="fixed inset-0 z-50 bg-[#0d0d0d] flex flex-col justify-between">
+
+  <!-- Header mobile: logo + close -->
+  <div class="flex justify-between items-center px-6 pt-6">
+    <img src="assets/images/LGS.svg" alt="logo brand" class="w-28 h-auto cursor-pointer" (click)="toggleMobileMenu(); scrollToSection('hero')">
+    <button (click)="toggleMobileMenu()" class="text-white text-3xl font-bold">&times;</button>
+  </div>
+
+  <!-- Menu items -->
+  <nav class="flex flex-col items-center flex-1 justify-center space-y-8 text-white text-lg">
+    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
+       (click)="scrollToSection('hero'); toggleMobileMenu()">Accueil</a>
+    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
+       (click)="scrollToSection('services'); toggleMobileMenu()">Services</a>
+    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
+       (click)="scrollToSection('process'); toggleMobileMenu()">Process</a>
+    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
+       (click)="scrollToSection('testimony'); toggleMobileMenu()">Témoignages</a>
+    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
+       (click)="scrollToSection('history'); toggleMobileMenu()">À propos</a>
+    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
+       (click)="scrollToSection('contact'); toggleMobileMenu()">Contact</a>
   </nav>
+
+  <!-- CTA buttons -->
+  <div class="flex flex-col px-6 pb-12 space-y-4">
+    <a href="https://wa.me/32XXXXXXXXX" target="_blank"
+       class="w-full text-center rounded-lg bg-green-600 px-6 py-3 font-medium uppercase text-white hover:bg-green-500 transition">
+      Contacter via WhatsApp
+    </a>
+  </div>
 </div>
