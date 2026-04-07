@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit  } from '@angular/core';
-import { animateContact, animateFooter, animateHistoire, animateProcess, animateTestimonials } from '../../animations';
+import { animateProcess } from '../../animations';
 
 
 @Component({

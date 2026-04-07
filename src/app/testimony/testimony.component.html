@@ -23,17 +23,25 @@
           class="absolute inset-0 bg-center bg-cover"
           style="background-image: url('assets/images/var2.jpg');">
         </div>
+
         <!-- Overlay sombre -->
         <div class="absolute inset-0 bg-black/55"></div>
 
         <!-- Contenu texte -->
         <div class="relative p-8 lg:p-10 z-10 text-[#f0ede8]">
+
+          <!-- Guillemet -->
           <div class="text-[#3a3530] text-7xl mb-4 font-serif leading-none">"</div>
+
+          <!-- Texte -->
           <p class="text-[#c0b8b0] text-base sm:text-lg italic mb-4">
             Réactivité impeccable et profils parfaitement sélectionnés. Notre gala annuel s'est déroulé sans le moindre accroc. Une collaboration que nous renouvelons chaque année.
           </p>
+
+          <!-- Auteur -->
           <div class="text-[#8a7d6a] font-semibold text-lg">Sophie Bernard</div>
           <div class="text-[#9a9088] text-sm">Directrice événements, Palais des Congrès</div>
+
         </div>
       </div>
 
@@ -41,6 +49,18 @@
       <ng-container *ngFor="let testimonial of testimonials; let i = index">
         <div class="testimonial-card bg-[#0a0a0a] p-6 rounded-lg shadow-md hover:shadow-lg transition-transform duration-300 ease-out">
           <div class="text-[#3a3530] text-5xl mb-4 font-serif leading-none">"</div>
+          <!-- Étoiles dynamiques -->
+          <div class="flex gap-1 mb-3">
+            <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+              <svg
+                class="w-4 h-4"
+                [ngClass]="i < 5 ? 'text-[#d6b36a]' : 'text-gray-700'"
+                fill="currentColor"
+                viewBox="0 0 20 20">
+                <path d="M9.049 2.927C9.3 2.1 10.7 2.1 10.951 2.927L12.3 6.7a1 1 0 00.95.69h3.98c.969 0 1.371 1.24.588 1.81l-3.22 2.34a1 1 0 00-.364 1.118l1.23 3.86c.285.894-.755 1.637-1.54 1.118l-3.3-2.2a1 1 0 00-1.1 0l-3.3 2.2c-.784.52-1.824-.224-1.54-1.118l1.23-3.86a1 1 0 00-.364-1.118L2.18 9.2c-.783-.57-.38-1.81.588-1.81h3.98a1 1 0 00.95-.69l1.35-3.773z"/>
+              </svg>
+            </ng-container>
+          </div>
           <p class="text-[#c0b8b0] text-base italic mb-4">
             {{ testimonial.text }}
           </p>

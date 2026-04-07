@@ -14,15 +14,15 @@
   <!-- Menu desktop gauche -->
   <ul class="navbar-left hidden sm:flex sm:mx-auto sm:items-center sm:w-auto sm:space-x-6 text-white text-sm">
     <li class="group relative">
-      <a class="font-light uppercase cursor-pointer navbar-link">Accueil</a>
+      <a class="font-light uppercase cursor-pointer navbar-link" (click)="scrollToSection('hero')">Accueil</a>
       <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
     </li>
     <li class="group relative">
-      <a class="font-light uppercase cursor-pointer navbar-link">Services</a>
+      <a class="font-light uppercase cursor-pointer navbar-link" (click)="scrollToSection('services')">Services</a>
       <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
     </li>
     <li class="group relative">
-      <a class="font-light uppercase cursor-pointer navbar-link">Process</a>
+      <a class="font-light uppercase cursor-pointer navbar-link" (click)="scrollToSection('process')">Process</a>
       <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
     </li>
   </ul>
@@ -35,15 +35,15 @@
   <!-- Menu desktop droite -->
   <ul class="navbar-right hidden sm:flex sm:mx-auto sm:items-center sm:w-auto sm:space-x-6 text-white text-sm">
     <li class="group relative">
-      <a class="font-light uppercase cursor-pointer navbar-link">À propos</a>
+      <a class="font-light uppercase cursor-pointer navbar-link" (click)="scrollToSection('testimony')">Témoignages</a>
       <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
     </li>
     <li class="group relative">
-      <a class="font-light uppercase cursor-pointer navbar-link">Témoignages</a>
+      <a class="font-light uppercase cursor-pointer navbar-link" (click)="scrollToSection('history')">À propos</a>
       <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
     </li>
     <li class="group relative">
-      <a class="font-light uppercase cursor-pointer navbar-link">Contact</a>
+      <a class="font-light uppercase cursor-pointer navbar-link" (click)="scrollToSection('contact')">Contact</a>
       <div class="h-0.5 bg-white scale-x-0 group-hover:scale-100 origin-left rounded-full"></div>
     </li>
   </ul>
