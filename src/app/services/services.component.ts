@@ -24,14 +24,14 @@ export class ServicesComponent implements AfterViewInit {
   {
     id: 0,
     title: 'Salle',
-    desc: 'Personnel de salle expérimenté pour vos réceptions et événements.',
+    desc: 'Personnel de salle formé pour assurer un service fluide et professionnel.',
     image: 'assets/images/carré-salle.jpeg',
     link: 'salle'
   },
   {
     id: 1,
     title: 'Cuisine',
-    desc: 'Cuisiniers, commis et chefs qualifiés pour vos prestations traiteur.',
+    desc: 'Du personnel de cuisine formé pour garantir un service efficace en restaurant et en événementiel.',
     image: 'assets/images/carré-cuisine.jpeg',
     link: 'cuisine'
   },
@@ -44,15 +44,15 @@ export class ServicesComponent implements AfterViewInit {
   },
   {
     id: 3,
-    title: 'Prestation',
-    desc: 'Gestion complète de vos prestations événementielles et logistiques.',
+    title: 'Organisation & process',
+    desc: 'Une gestion simple et structurée de vos demandes de personnel, de la prise en charge jusqu’au déroulement de la prestation.',
     image: 'assets/images/carré-prestation.png',
     link: 'prestation'
   },
   {
     id: 4,
     title: 'Logistique',
-    desc: 'Transport, montage et coordination logistique de vos événements.',
+    desc: 'Une logistique efficace pour la mise en place et le bon déroulement de vos événements.',
     image: 'assets/images/carré-logistique.png',
     link: 'logistique'
   },

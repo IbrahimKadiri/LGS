@@ -1,66 +1,163 @@
 <section class="relative bg-[#0d0d0d] text-[#f0ede8]">
 
-  <!-- Hero background -->
-  <div class="detail-hero relative h-[280px] sm:h-[320px] lg:h-[350px]">
-    <img [src]="service?.image" alt="{{ service?.title }}"
+  <!-- HERO -->
+  <div class="detail-hero relative h-[320px] sm:h-[380px] lg:h-[460px]">
+    <img [src]="service?.image"
+         [alt]="service?.title"
          class="w-full h-full object-cover brightness-50">
+
     <div class="absolute inset-0 bg-black/50"></div>
 
-    <!-- Bouton retour discret -->
-    <div class="absolute top-6 left-6 sm:top-8 sm:left-8  z-20">
-        <a [routerLink]="['/']" fragment="services"
-        class="inline-block text-[#8a7d6a] border-b border-[#8a7d6a] text-sm sm:text-base font-medium uppercase tracking-widest hover:text-white hover:border-white transition">
+    <div class="absolute top-6 left-6 z-20">
+      <a [routerLink]="['/']" fragment="services"
+         class="text-[#8a7d6a] border-b border-[#8a7d6a] text-sm uppercase tracking-widest hover:text-white hover:border-white transition">
         ← Retour
-    </a>
+      </a>
     </div>
 
-    <!-- Texte centré -->
     <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
-      <div class="text-[#8a7d6a] uppercase text-sm tracking-widest mb-2">Service</div>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-light mb-2 leading-snug">{{ service?.title }}</h2>
-      <p class="text-[#c0b8b0] text-base sm:text-lg italic max-w-2xl">{{ service?.desc }}</p>
+      <span class="text-[#8a7d6a] uppercase text-sm tracking-widest mb-2">Service</span>
+
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-light mb-3">
+        {{ service?.title }}
+      </h1>
+
+      <p class="text-[#c0b8b0] text-sm sm:text-lg italic max-w-2xl">
+        {{ service?.desc }}
+      </p>
     </div>
   </div>
 
-  <!-- Points forts style Process -->
-  <div class="max-w-5xl mx-auto px-6 py-16">
-    <h3 class="text-[#8a7d6a] uppercase text-sm tracking-widest mb-2 text-center">Nos points forts</h3>
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-light text-center text-[#f0ede8] mb-12">
-      Pourquoi choisir ce service ?
+  <!-- POINTS FORTS (TIMELINE RESTAURÉE) -->
+  <div class="max-w-[90rem] mx-auto px-6 lg:px-12 xl:px-20 py-24">
+
+    <div class="bg-[#151515] border border-[#1a1a1a] rounded-2xl p-10 sm:p-14 lg:p-20">
+
+
+      <div class="flex flex-col gap-12 sm:gap-16 relative">
+
+        <ng-container *ngFor="let point of service?.details; let i = index">
+
+          <div class="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start relative">
+
+            <!-- NUMÉRO + LIGNE VERTICALE -->
+            <div class="flex flex-col items-center sm:items-start sm:w-16 relative z-10">
+
+              <div class="text-[#8a7d6a] text-xs font-semibold tracking-widest">
+                {{ i + 1 | number:'2.0' }}
+              </div>
+
+              <div *ngIf="i < service.details.length - 1"
+                   class="w-px h-10 sm:h-24 bg-[#2a2a2a] mt-3"></div>
+
+            </div>
+
+            <!-- CONTENU -->
+            <div class="flex-1">
+              <h4 class="text-2xl lg:text-3xl text-[#f0ede8] font-light mb-3">
+                {{ point.subtitle }}
+              </h4>
+
+              <p class="text-[#c0b8b0] text-sm sm:text-base lg:text-lg leading-relaxed whitespace-pre-line">
+                {{ point.text }}
+              </p>
+            </div>
+
+          </div>
+
+        </ng-container>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- POSTES -->
+  <div *ngIf="service?.positions" class="max-w-[90rem] mx-auto px-6 lg:px-12 xl:px-20 pb-20">
+
+    <h2 class="text-3xl sm:text-4xl font-light text-center mb-12">
+      Postes disponibles
     </h2>
 
-    <div class="flex flex-col gap-12 sm:gap-16">
-      <ng-container *ngFor="let point of service?.details; let i = index">
-        <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start process-step">
-          <!-- Numéro + ligne verticale -->
-          <div class="flex flex-col items-center sm:items-start sm:w-16 relative z-10">
-            <div class="text-[#8a7d6a] text-xs font-semibold tracking-widest">{{ i + 1 | number:'2.0' }}</div>
-            <div *ngIf="i < service.details.length - 1" class="w-px h-5 sm:h-24 bg-[#1a1a1a] mt-2 vertical-line"></div>
-          </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let p of service.positions"
+           class="border border-[#1a1a1a] p-7 sm:p-8 rounded-lg">
+        <h4 class="text-white">{{ p.title }}</h4>
+        <p class="text-[#c0b8b0] text-sm">{{ p.desc }}</p>
+      </div>
+    </div>
 
-          <!-- Contenu -->
-          <div class="flex-1">
-            <h4 class="text-2xl sm:text-2xl text-[#f0ede8] font-light mb-2 leading-snug">{{ point.subtitle }}</h4>
-            <p class="text-[#c0b8b0] text-sm sm:text-base leading-relaxed">{{ point.text }}</p>
+  </div>
 
-            <div *ngIf="i < service.details.length - 1" class="border-b border-[#1a1a1a] mt-6 sm:mt-8 horizontal-line"></div>
-          </div>
+    <!-- DRESS CODE -->
+<div *ngIf="service?.dressCodes" class="max-w-4xl mx-auto px-6 pb-24">
+
+  <div class="bg-[#151515] border border-[#1a1a1a] rounded-2xl p-10 sm:p-14">
+
+    <h2 class="text-3xl sm:text-4xl font-light text-center mb-14">
+      Tenue des équipes
+    </h2>
+
+    <div class="flex flex-col items-center space-y-6">
+
+      <ng-container *ngFor="let item of service.dressCodes">
+
+        <div class="flex items-center gap-4">
+
+          <!-- petit point accent -->
+
+          <span class="text-[#f0ede8] text-sm sm:text-base tracking-wide">
+            {{ item.title }}
+          </span>
+
         </div>
+
       </ng-container>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+  <!-- NOTE -->
+  <div *ngIf="service?.note" class="max-w-5xl mx-auto px-6 pb-20">
+    <div class="border border-[#1a1a1a] p-7 sm:p-8 rounded-lg bg-[#111]">
+      <h4 class="text-white mb-2">Note : </h4>
+      <p class="text-[#c0b8b0] text-sm">{{ service.note }}</p>
     </div>
   </div>
 
-  <!-- CTA bottom -->
-  <div class="cta-section bg-[#0d0d0d] py-12 mt-12 flex flex-col sm:flex-row justify-center items-center gap-6 px-6">
-    <a [routerLink]="['/']" fragment="contact"
-       class="cta-btn w-full sm:w-auto text-center rounded-lg border border-white bg-[#0d0d0d] px-12 py-4 font-medium uppercase text-white hover:bg-gray-200 hover:text-black transition">
-      Demander ce service
-    </a>
-    <a href="https://wa.me/32XXXXXXXXX" target="_blank"
-       class="cta-btn w-full sm:w-auto text-center rounded-lg bg-green-600 px-12 py-4 font-medium uppercase text-white hover:bg-green-500 transition">
-      Contacter via WhatsApp
-    </a>
+  <!-- CTA -->
+  <div class="max-w-[90rem] mx-auto px-6 lg:px-12 xl:px-20 pb-32">
+
+    <div class="bg-[#151515] border border-[#1a1a1a] rounded-2xl p-12 sm:p-16 lg:p-24 text-center">
+
+      <h3 class="text-2xl sm:text-4xl lg:text-5xl font-light text-white mb-6">
+        Besoin de personnel pour votre renforcer vos équipes ?
+      </h3>
+
+      <p class="text-[#c0b8b0] text-sm sm:text-lg lg:text-xl mb-12 max-w-4xl mx-auto">
+        Un renfort fiable et adapté à vos besoins en restauration et évenementiel.
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-5">
+
+        <a [routerLink]="['/']" fragment="contact"
+           class="px-12 py-5 border border-white uppercase text-white hover:bg-white hover:text-black transition">
+          Demander un devis
+        </a>
+
+        <a href="https://wa.me/32XXXXXXXXX"
+           class="px-12 py-5 bg-green-600 text-white uppercase hover:bg-green-500 transition">
+          WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
   </div>
 
-  
 </section>
