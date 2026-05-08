@@ -44,18 +44,18 @@ export class ServicesComponent implements AfterViewInit {
   },
   {
     id: 3,
+    title: 'Logistique',
+    desc: 'Une logistique efficace pour la mise en place et le bon déroulement de vos événements.',
+    image: 'assets/images/carré-logistique.png',
+    link: 'logistique'
+  },
+  {
+    id: 4,
     title: 'Organisation & process',
     desc: 'Une gestion simple et structurée de vos demandes de personnel.',
     image: 'assets/images/carré-prestation.png',
     link: 'prestation'
   },
-  {
-    id: 4,
-    title: 'Logistique',
-    desc: 'Une logistique efficace pour la mise en place et le bon déroulement de vos événements.',
-    image: 'assets/images/carré-logistique.png',
-    link: 'logistique'
-  }
 ];
   
   @ViewChild('events') events!: ElementRef;

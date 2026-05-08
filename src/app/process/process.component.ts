@@ -26,28 +26,28 @@ export class ProcessComponent implements AfterViewInit  {
 
   steps = [
     {
-      number: '01',
+      number: '1',
       icon: this.Search,
-      title: 'Sélection du personnel',
-      desc: 'Sourcing et qualification de profils adaptés à votre établissement.'
+      title: 'Votre demande',
+      desc: 'Nous analysons votre demande immédiatement. Les demandes doivent être effectuées au minimum 24 heures à l’avance. Une réponse vous est apportée dans l’heure.'
     },
     {
-      number: '02',
+      number: '2',
       icon: this.Users,
-      title: 'Formation & préparation',
-      desc: 'Briefing métier, codes de service et préparation logistique.'
+      title: 'Briefing',
+      desc: 'Nous sélectionnons le personnel adapté. Un briefing complet est réalisé. Le code vestimentaire est communiqué. Les exigences de l’établissement ou de l’événement sont précisées.'
     },
     {
-      number: '03',
+      number: '3',
       icon: this.Sparkles,
-      title: 'Déploiement sur site',
-      desc: 'Nos équipes interviennent en autonomie ou en renfort.'
+      title: 'Arrivée sur site',
+      desc: 'Le personnel arrive à l’heure convenue. Il se présente directement au responsable sur place. La prise de poste se fait sans délai.'
     },
     {
-      number: '04',
+      number: '4',
       icon: this.MessageCircle,
-      title: 'Évaluation & feedback',
-      desc: 'Suivi qualité et retour d’expérience pour amélioration continue.'
+      title: 'Suivi et collaboration',
+      desc: 'Nous assurons un suivi après chaque mission. Les retours sont collectés afin de garantir un service constant et qualitatif. La facturation est effectuée de manière mensuelle. Des conditions préférentielles peuvent être appliquées en fonction du volume et de la régularité des missions.'
     }
   ];
 

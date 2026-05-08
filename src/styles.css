@@ -8,7 +8,7 @@ html, body {
  }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Cormorant Garamond", serif;
 }
 
 
@@ -28,6 +28,7 @@ img.logo-white {
 :root {
   --gold: oklch(0.85 0.12 80);
   --gold-dark: oklch(0.7 0.09 70);
+  --card: oklch(18% .006 60);
 }
 
 .gradient-gold {

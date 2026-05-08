@@ -9,7 +9,7 @@
 
     <h2 class="text-4xl sm:text-5xl font-light text-[#f5f2ee] mb-5 leading-tight">
       Une organisation
-      <span class="text-[var(--gold)] italic">
+      <span class="text-[var(--gold)]">
         simple et efficace
       </span>
     </h2>
@@ -21,51 +21,33 @@
 
   </div>
 
-
-  <!-- Circle Wrapper -->
+  <!-- Circle Wrapper (HIDDEN ON MOBILE) -->
   <div
     class="process-step relative mx-auto px-4
-
-           w-[340px] h-[340px]
+           hidden sm:block
 
            sm:w-[500px] sm:h-[500px]
-
            md:w-[820px] md:h-[820px]
-
            xl:w-[950px] xl:h-[950px]"
   >
 
     <!-- Rings -->
-    <!-- Ring principale gold -->
     <div class="absolute inset-0 rounded-full border border-[var(--gold)]/20"></div>
-
-    <!-- Ring secondaire plus visible -->
     <div class="absolute inset-8 rounded-full border border-dashed border-[var(--gold)]/35"></div>
-
-    <!-- Ring interne subtile -->
     <div class="absolute inset-16 rounded-full border border-white/5"></div>
 
-
-    <!-- Center -->
+    <!-- Center (HIDDEN ON MOBILE) -->
     <div class="process-center absolute inset-0 flex items-center justify-center z-10">
 
       <div
         class="w-24 h-24
-
                sm:w-32 sm:h-32
-
                md:w-44 md:h-44
-
                rounded-full
-
                border border-[var(--gold)]/20
-
                bg-[#111111]/90
-
                backdrop-blur-md
-
                flex items-center justify-center
-
                shadow-[0_0_40px_rgba(184,155,114,0.08)]"
       >
 
@@ -79,7 +61,6 @@
 
     </div>
 
-
     <!-- SVG -->
     <svg
       viewBox="-400 -400 800 800"
@@ -88,35 +69,27 @@
 
       <defs>
 
-        <!-- GOLD GRADIENT -->
         <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#e6c78f" stop-opacity="0.9" />
           <stop offset="100%" stop-color="#8f6a35" stop-opacity="0.4" />
         </linearGradient>
 
-        <!-- Arrow -->
-        <marker
-          id="arrow"
-          viewBox="0 0 10 10"
-          refX="8"
-          refY="5"
-          markerWidth="5"
-          markerHeight="5"
-          orient="auto-start-reverse"
-        >
+        <marker id="arrow"
+                viewBox="0 0 10 10"
+                refX="8"
+                refY="5"
+                markerWidth="5"
+                markerHeight="5"
+                orient="auto-start-reverse">
 
-          <path
-            d="M 0 0 L 10 5 L 0 10 z"
-            fill="#b89b72"
-            opacity="0.7"
-          />
+          <path d="M 0 0 L 10 5 L 0 10 z"
+                fill="#b89b72"
+                opacity="0.7" />
 
         </marker>
 
       </defs>
 
-
-      <!-- Paths -->
       <path
         *ngFor="let step of steps; let i = index"
         [attr.d]="getArcPath(i)"
@@ -129,19 +102,14 @@
 
     </svg>
 
-
     <!-- Steps -->
     <ng-container *ngFor="let step of steps; let i = index">
 
       <div
         class="absolute top-1/2 left-1/2
-
                w-[120px]
-
                sm:w-[180px]
-
                md:w-[240px]
-
                xl:w-[260px]"
         [style.transform]="
           'translate(calc(-50% + ' +
@@ -155,47 +123,24 @@
         <!-- CARD -->
         <div
           class="group
-
                  bg-gradient-to-br
                  from-[rgba(184,155,114,0.14)]
                  via-[#16110c]/95
                  to-[#0f0f0f]
-
                  backdrop-blur-sm
-
                  border border-[var(--gold)]/15
-
                  rounded-2xl
-
                  p-3 sm:p-5
-
                  text-center
-
-                 transition-all duration-300
-
                  hover:border-[var(--gold)]/30
-
-                 hover:shadow-[0_0_30px_rgba(184,155,114,0.10)]
-
-                 hover:-translate-y-1"
+                 hover:shadow-[0_0_30px_rgba(184,155,114,0.10)]"
         >
 
           <!-- Icon -->
-          <div
-            class="w-10 h-10
-
-                   mx-auto mb-3
-
-                   rounded-full
-
-                   bg-gradient-to-br
-                   from-[var(--gold)]/20
-                   to-[var(--gold-dark)]/10
-
-                   border border-[var(--gold)]/30
-
-                   flex items-center justify-center"
-          >
+          <div class="w-10 h-10 mx-auto mb-3 rounded-full
+                      bg-gradient-to-br from-[var(--gold)]/20 to-[var(--gold-dark)]/10
+                      border border-[var(--gold)]/30
+                      flex items-center justify-center">
 
             <lucide-icon
               [img]="step.icon"
@@ -204,50 +149,31 @@
 
           </div>
 
-
           <!-- Number -->
-          <div
-            class="text-[10px]
-
-                   tracking-[0.35em]
-
-                   text-gradient-gold
-
-                   mb-2"
-          >
-
+          <div class="text-[88px] sm:text-[20px] md:text-[22px]
+                      tracking-[0.35em]
+                      text-gradient-gold
+                      mb-2">
             {{ step.number }}
-
           </div>
 
-
           <!-- Title -->
-          <h4
-            class="text-[#f5f2ee]
-
-                   text-[11px]
-                   sm:text-sm
-                   md:text-base
-
-                   leading-tight mb-2"
-          >
+          <h4 class="text-[#f5f2ee]
+                     text-[11px]
+                     sm:text-sm
+                     md:text-base
+                     leading-tight mb-2">
 
             {{ step.title }}
 
           </h4>
 
-
           <!-- Desc -->
-          <p
-            class="hidden sm:block
-
-                   text-[10px]
-                   md:text-xs
-
-                   text-[#8b8178]
-
-                   leading-relaxed"
-          >
+          <p class="hidden sm:block
+                    text-[10px]
+                    md:text-xs
+                    text-[#8b8178]
+                    leading-relaxed">
 
             {{ step.desc }}
 
@@ -258,6 +184,34 @@
       </div>
 
     </ng-container>
+
+  </div>
+
+  <!-- MOBILE VERSION (simple vertical fallback) -->
+  <div class="sm:hidden px-6 space-y-6">
+
+    <div
+      *ngFor="let step of steps; let i = index"
+      class="bg-[#0f0f0f] border border-[var(--gold)]/10 rounded-xl p-5"
+    >
+
+      <div class="flex items-center gap-4 mb-3">
+
+        <div class="text-[14px] text-gradient-gold font-light">
+          {{ step.number }}
+        </div>
+
+        <h4 class="text-[#f5f2ee] text-sm">
+          {{ step.title }}
+        </h4>
+
+      </div>
+
+      <p class="text-[#8b8178] text-xs leading-relaxed">
+        {{ step.desc }}
+      </p>
+
+    </div>
 
   </div>
 

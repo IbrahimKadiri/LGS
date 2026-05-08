@@ -10,13 +10,13 @@
 
     <div class="absolute top-6 left-6 z-20">
       <a [routerLink]="['/']" fragment="services"
-         class="text-[#8a7d6a] border-b border-[#8a7d6a] text-sm uppercase tracking-widest hover:text-white hover:border-white transition">
+         class="text-[var(--gold)] border-b border-[#8a7d6a] text-sm uppercase tracking-widest hover:text-white hover:border-white transition">
         ← Retour
       </a>
     </div>
 
     <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
-      <span class="text-[#8a7d6a] uppercase text-sm tracking-widest mb-2">Service</span>
+      <span class="text-gradient-gold uppercase text-sm tracking-widest mb-2">Service</span>
 
       <h1 class="text-3xl sm:text-5xl lg:text-6xl font-light mb-3">
         {{ service?.title }}
@@ -31,7 +31,7 @@
   <!-- POINTS FORTS (TIMELINE RESTAURÉE) -->
   <div class="max-w-[90rem] mx-auto px-6 lg:px-12 xl:px-20 py-24">
 
-    <div class="bg-[#151515] border border-[#1a1a1a] rounded-2xl p-10 sm:p-14 lg:p-20">
+    <div class="bg-card border border-[#1a1a1a] rounded-2xl p-10 sm:p-14 lg:p-20">
 
 
       <div class="flex flex-col gap-12 sm:gap-16 relative">
@@ -43,12 +43,12 @@
             <!-- NUMÉRO + LIGNE VERTICALE -->
             <div class="flex flex-col items-center sm:items-start sm:w-16 relative z-10">
 
-              <div class="text-[#8a7d6a] text-xs font-semibold tracking-widest">
-                {{ i + 1 | number:'2.0' }}
+              <div class="text-[var(--gold)] text-2xl font-semibold tracking-widest">
+                {{ i + 1 }}
               </div>
 
               <div *ngIf="i < service.details.length - 1"
-                   class="w-px h-10 sm:h-24 bg-[#2a2a2a] mt-3"></div>
+                   class="w-px h-10 sm:h-24 bg-[var(--gold)] mt-3"></div>
 
             </div>
 
@@ -58,8 +58,12 @@
                 {{ point.subtitle }}
               </h4>
 
-              <p class="text-[#c0b8b0] text-sm sm:text-base lg:text-lg leading-relaxed whitespace-pre-line">
-                {{ point.text }}
+              <p
+                class="text-[#c0b8b0]
+                      text-base sm:text-lg lg:text-xl
+                      leading-relaxed
+                      whitespace-pre-line"
+                [innerHTML]="point.text">
               </p>
             </div>
 
@@ -81,8 +85,8 @@
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div *ngFor="let p of service.positions"
-           class="border border-[#1a1a1a] p-7 sm:p-8 rounded-lg">
-        <h4 class="text-white">{{ p.title }}</h4>
+           class="border border-[var(--gold)]/30 bg-gradient-to-br from-[var(--gold)]/10 to-transparent p-7 sm:p-8 rounded-lg">
+        <h4 class="text-[var(--gold)]">{{ p.title }}</h4>
         <p class="text-[#c0b8b0] text-sm">{{ p.desc }}</p>
       </div>
     </div>
@@ -124,7 +128,7 @@
   <!-- NOTE -->
   <div *ngIf="service?.note" class="max-w-5xl mx-auto px-6 pb-20">
     <div class="border border-[#1a1a1a] p-7 sm:p-8 rounded-lg bg-[#111]">
-      <h4 class="text-white mb-2">Note : </h4>
+      <h4 class="text-[var(--gold)] mb-2">Note : </h4>
       <p class="text-[#c0b8b0] text-sm">{{ service.note }}</p>
     </div>
   </div>
@@ -132,7 +136,7 @@
   <!-- CTA -->
   <div class="max-w-[90rem] mx-auto px-6 lg:px-12 xl:px-20 pb-32">
 
-    <div class="bg-[#151515] border border-[#1a1a1a] rounded-2xl p-12 sm:p-16 lg:p-24 text-center">
+    <div class="bg-[#151515] border border-[var(--gold)]/30 bg-gradient-to-br from-[var(--gold)]/10 to-transparent rounded-2xl p-12 sm:p-16 lg:p-24 text-center">
 
       <h3 class="text-2xl sm:text-4xl lg:text-5xl font-light text-white mb-6">
         Besoin de personnel pour votre renforcer vos équipes ?
