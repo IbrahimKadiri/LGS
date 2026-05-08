@@ -1,38 +1,243 @@
-<section class="bg-[#060606] py-24">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="relative py-24 overflow-hidden bg-[#0a0a0a] border-y border-[#1a1a1a]">
 
-    <!-- Intro -->
-    <div class="process-header max-w-3xl mx-auto text-center mb-12">
-      <div class="text-[#8a7d6a] uppercase text-sm tracking-widest mb-2">Notre process</div>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-light text-[#f0ede8] mb-4">
-        Simple, rapide et sans surprise
-      </h2>
-      <p class="text-[#9a9088] text-base sm:text-lg italic">
-        Un accompagnement fluide, clair et structuré à chaque étape de votre projet.
-      </p>
+  <!-- Intro -->
+  <div class="max-w-3xl mx-auto text-center mb-20 px-6">
+
+    <div class="text-[#8a7d6a] uppercase tracking-[0.35em] text-xs mb-4">
+      Notre processus
     </div>
 
-    <!-- Étapes -->
-    <div class="flex flex-col gap-12 sm:gap-16 relative">
-      <ng-container *ngFor="let step of steps; let i = index">
-        <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start process-step">
+    <h2 class="text-4xl sm:text-5xl font-light text-[#f5f2ee] mb-5 leading-tight">
+      Une organisation
+      <span class="text-[#b89b72] italic">
+        simple et efficace
+      </span>
+    </h2>
 
-          <!-- Numéro + ligne verticale -->
-          <div class="flex flex-col items-center sm:items-start sm:w-16 relative z-10">
-            <div class="text-[#8a7d6a] text-xs font-semibold tracking-widest">{{ step.id | number:'2.0' }}</div>
-            <div *ngIf="i < steps.length - 1" class="w-px h-5 sm:h-24 bg-[#1a1a1a] mt-2 vertical-line"></div>
+    <p class="text-[#8e857d] text-base sm:text-lg leading-relaxed">
+      De la sélection des profils jusqu’au suivi terrain,
+      chaque étape est pensée pour garantir une prestation fluide.
+    </p>
+
+  </div>
+
+
+  <!-- Circle Wrapper -->
+  <div
+    class="relative mx-auto px-4
+
+           w-[340px] h-[340px]
+
+           sm:w-[500px] sm:h-[500px]
+
+           md:w-[820px] md:h-[820px]
+
+           xl:w-[950px] xl:h-[950px]"
+  >
+
+    <!-- Rings -->
+    <div class="absolute inset-0 rounded-full border border-[#b89b72]/10"></div>
+
+    <div class="absolute inset-8 rounded-full border border-dashed border-[#b89b72]/15"></div>
+
+    <div class="absolute inset-16 rounded-full border border-[#b89b72]/10"></div>
+
+
+    <!-- Center -->
+    <div class="absolute inset-0 flex items-center justify-center z-10">
+
+      <div
+        class="w-24 h-24
+
+               sm:w-32 sm:h-32
+
+               md:w-44 md:h-44
+
+               rounded-full
+
+               border border-[#b89b72]/20
+
+               bg-[#111111]/90
+
+               backdrop-blur-md
+
+               flex items-center justify-center
+
+               shadow-[0_0_40px_rgba(184,155,114,0.08)]"
+      >
+
+        <img
+          src="assets/images/LGS.svg"
+          alt="LGS"
+          class="w-14 sm:w-20 md:w-28 object-contain opacity-95"
+        />
+
+      </div>
+
+    </div>
+
+
+    <!-- SVG -->
+    <svg
+      viewBox="-400 -400 800 800"
+      class="absolute inset-0 w-full h-full -rotate-90"
+    >
+
+      <defs>
+
+        <marker
+          id="arrow"
+          viewBox="0 0 10 10"
+          refX="8"
+          refY="5"
+          markerWidth="5"
+          markerHeight="5"
+          orient="auto-start-reverse"
+        >
+
+          <path
+            d="M 0 0 L 10 5 L 0 10 z"
+            fill="#b89b72"
+            opacity="0.6"
+          />
+
+        </marker>
+
+      </defs>
+
+
+      <path
+        *ngFor="let step of steps; let i = index"
+        [attr.d]="getArcPath(i)"
+        fill="none"
+        stroke="#b89b72"
+        stroke-opacity="0.35"
+        stroke-width="1"
+        marker-end="url(#arrow)"
+      />
+
+    </svg>
+
+
+    <!-- Steps -->
+    <ng-container *ngFor="let step of steps; let i = index">
+
+      <div
+        class="absolute top-1/2 left-1/2
+
+               w-[120px]
+
+               sm:w-[180px]
+
+               md:w-[240px]
+
+               xl:w-[260px]"
+        [style.transform]="
+          'translate(calc(-50% + ' +
+          getPosition(i).x +
+          'px), calc(-50% + ' +
+          getPosition(i).y +
+          'px))'
+        "
+      >
+
+        <div
+          class="bg-[#111111]/95
+
+                 backdrop-blur-sm
+
+                 border border-[#b89b72]/20
+
+                 rounded-2xl
+
+                 p-3 sm:p-5
+
+                 text-center
+
+                 transition-all duration-300
+
+                 hover:border-[#b89b72]/40
+
+                 hover:shadow-[0_0_30px_rgba(184,155,114,0.12)]"
+        >
+
+          <!-- Icon -->
+          <div
+            class="w-10 h-10
+
+                   mx-auto mb-3
+
+                   rounded-full
+
+                   bg-[#b89b72]/10
+
+                   border border-[#b89b72]/30
+
+                   flex items-center justify-center"
+          >
+
+            <lucide-icon
+              [img]="step.icon"
+              class="w-4 h-4 text-[#b89b72]"
+            ></lucide-icon>
+
           </div>
 
-          <!-- Contenu étape -->
-          <div class="flex-1">
-            <h3 class="text-2xl sm:text-2xl text-[#f0ede8] font-light mb-2 leading-snug">{{ step.title }}</h3>
-            <p class="text-[#9a9088] text-sm sm:text-base leading-relaxed">{{ step.description }}</p>
 
-            <div *ngIf="i < steps.length - 1" class="border-b border-[#1a1a1a] mt-6 sm:mt-8 horizontal-line"></div>
+          <!-- Number -->
+          <div
+            class="text-[10px]
+
+                   tracking-[0.35em]
+
+                   text-[#b89b72]
+
+                   mb-2"
+          >
+
+            {{ step.number }}
+
           </div>
+
+
+          <!-- Title -->
+          <h4
+            class="text-[#f5f2ee]
+
+                   text-[11px]
+                   sm:text-sm
+                   md:text-base
+
+                   leading-tight mb-2"
+          >
+
+            {{ step.title }}
+
+          </h4>
+
+
+          <!-- Desc -->
+          <p
+            class="hidden sm:block
+
+                   text-[10px]
+                   md:text-xs
+
+                   text-[#8b8178]
+
+                   leading-relaxed"
+          >
+
+            {{ step.desc }}
+
+          </p>
 
         </div>
-      </ng-container>
-    </div>
+
+      </div>
+
+    </ng-container>
+
   </div>
+
 </section>
