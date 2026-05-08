@@ -85,11 +85,16 @@ export function animateServices() {
     });
   });
 }
+
 // ---------------------
-// PROCESS
+// PROCESS (premium circular version)
 // ---------------------
 export function animateProcess() {
-  const tl = gsap.timeline({
+
+  // ---------------------
+  // 1. HEADER (titre + sous-titre)
+  // ---------------------
+  const headerTl = gsap.timeline({
     scrollTrigger: {
       trigger: "#process",
       start: "top 80%",
@@ -97,36 +102,69 @@ export function animateProcess() {
     }
   });
 
-  tl.from(".process-header > *", {
+  headerTl.from(".process-header > *", {
     opacity: 0,
-    y: 30,
-    stagger: 0.15,
+    y: 35,
+    stagger: 0.2,
+    duration: 1.2,
+    ease: "power3.out",
   });
 
-  gsap.utils.toArray(".process-step").forEach((step: any, i) => {
-    const innerTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: step,
-        start: "top 80%",
-        toggleActions: "play none none reset",
-      }
+
+  // ---------------------
+  // 2. STEPS (apparition circulaire)
+  // ---------------------
+  const stepsTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#process",
+      start: "top 70%",
+      toggleActions: "play none none reset",
+    }
+  });
+
+  stepsTl.from(".process-step", {
+    opacity: 0,
+    scale: 0.85,
+    y: 30,
+    duration: 1.6,
+    ease: "power4.out",
+    stagger: {
+      each: 0.18,
+      from: "center",
+    }
+  });
+
+
+
+
+  // ---------------------
+  //  HOVER CENTRE (logo)
+  // ---------------------
+  const center = document.querySelector(".process-center");
+
+  if (center) {
+    gsap.set(center, { transformOrigin: "center center" });
+
+    center.addEventListener("mouseenter", () => {
+      gsap.to(center, {
+        scale: 1.12,
+        rotate: 3,
+        duration: 0.4,
+        ease: "power2.out",
+      });
     });
 
-    innerTl
-      .from(step, { opacity: 0, y: 40 })
-      .from(step.querySelector(".vertical-line"), {
-        scaleY: 0,
-        transformOrigin: "top",
-        duration: 0.5,
-      }, "-=0.4")
-      .from(step.querySelector(".horizontal-line"), {
-        scaleX: 0,
-        transformOrigin: "left",
-        duration: 0.5,
-      }, "-=0.3");
-  });
-}
+    center.addEventListener("mouseleave", () => {
+      gsap.to(center, {
+        scale: 1,
+        rotate: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    });
+  }
 
+}
 // ---------------------
 // TESTIMONIALS (animation à l'apparition)
 // ---------------------

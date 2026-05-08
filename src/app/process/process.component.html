@@ -1,7 +1,7 @@
 <section class="relative py-24 overflow-hidden bg-[#0a0a0a] border-y border-[#1a1a1a]">
 
   <!-- Intro -->
-  <div class="max-w-3xl mx-auto text-center mb-20 px-6">
+  <div class="process-header max-w-3xl mx-auto text-center mb-20 px-6">
 
     <div class="text-gradient-gold uppercase tracking-[0.35em] text-xs mb-4">
       Notre processus
@@ -14,7 +14,7 @@
       </span>
     </h2>
 
-    <p class="text-[#8e857d] text-base sm:text-lg leading-relaxed">
+    <p class="text-[#8e857d] text-base sm:text-lg leading-relaxed italic">
       De la sélection des profils jusqu’au suivi terrain,
       chaque étape est pensée pour garantir une prestation fluide.
     </p>
@@ -24,7 +24,7 @@
 
   <!-- Circle Wrapper -->
   <div
-    class="relative mx-auto px-4
+    class="process-step relative mx-auto px-4
 
            w-[340px] h-[340px]
 
@@ -36,15 +36,18 @@
   >
 
     <!-- Rings -->
-    <div class="absolute inset-0 rounded-full border border-[#b89b72]/10"></div>
+    <!-- Ring principale gold -->
+    <div class="absolute inset-0 rounded-full border border-[var(--gold)]/20"></div>
 
-    <div class="absolute inset-8 rounded-full border border-dashed border-[#b89b72]/15"></div>
+    <!-- Ring secondaire plus visible -->
+    <div class="absolute inset-8 rounded-full border border-dashed border-[var(--gold)]/35"></div>
 
-    <div class="absolute inset-16 rounded-full border border-[#b89b72]/10"></div>
+    <!-- Ring interne subtile -->
+    <div class="absolute inset-16 rounded-full border border-white/5"></div>
 
 
     <!-- Center -->
-    <div class="absolute inset-0 flex items-center justify-center z-10">
+    <div class="process-center absolute inset-0 flex items-center justify-center z-10">
 
       <div
         class="w-24 h-24
@@ -55,7 +58,7 @@
 
                rounded-full
 
-               border border-[#b89b72]/20
+               border border-[var(--gold)]/20
 
                bg-[#111111]/90
 
@@ -85,6 +88,13 @@
 
       <defs>
 
+        <!-- GOLD GRADIENT -->
+        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#e6c78f" stop-opacity="0.9" />
+          <stop offset="100%" stop-color="#8f6a35" stop-opacity="0.4" />
+        </linearGradient>
+
+        <!-- Arrow -->
         <marker
           id="arrow"
           viewBox="0 0 10 10"
@@ -98,7 +108,7 @@
           <path
             d="M 0 0 L 10 5 L 0 10 z"
             fill="#b89b72"
-            opacity="0.6"
+            opacity="0.7"
           />
 
         </marker>
@@ -106,13 +116,14 @@
       </defs>
 
 
+      <!-- Paths -->
       <path
         *ngFor="let step of steps; let i = index"
         [attr.d]="getArcPath(i)"
         fill="none"
-        stroke="#b89b72"
-        stroke-opacity="0.35"
-        stroke-width="1"
+        stroke="url(#goldGradient)"
+        stroke-opacity="0.5"
+        stroke-width="1.2"
         marker-end="url(#arrow)"
       />
 
@@ -141,12 +152,18 @@
         "
       >
 
+        <!-- CARD -->
         <div
-          class="bg-[#111111]/95
+          class="group
+
+                 bg-gradient-to-br
+                 from-[rgba(184,155,114,0.14)]
+                 via-[#16110c]/95
+                 to-[#0f0f0f]
 
                  backdrop-blur-sm
 
-                 border border-[#b89b72]/20
+                 border border-[var(--gold)]/15
 
                  rounded-2xl
 
@@ -156,9 +173,11 @@
 
                  transition-all duration-300
 
-                 hover:border-[#b89b72]/40
+                 hover:border-[var(--gold)]/30
 
-                 hover:shadow-[0_0_30px_rgba(184,155,114,0.12)]"
+                 hover:shadow-[0_0_30px_rgba(184,155,114,0.10)]
+
+                 hover:-translate-y-1"
         >
 
           <!-- Icon -->
@@ -169,9 +188,11 @@
 
                    rounded-full
 
-                   bg-[#b89b72]/10
+                   bg-gradient-to-br
+                   from-[var(--gold)]/20
+                   to-[var(--gold-dark)]/10
 
-                   border border-[#b89b72]/30
+                   border border-[var(--gold)]/30
 
                    flex items-center justify-center"
           >
@@ -190,7 +211,7 @@
 
                    tracking-[0.35em]
 
-                   text-[var(--gold)]
+                   text-gradient-gold
 
                    mb-2"
           >
