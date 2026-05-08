@@ -2,6 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import { animateTestimonials } from '../../animations';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-testimony',
   imports: [CommonModule],
@@ -16,8 +17,8 @@ export class TestimonyComponent implements AfterViewInit {
     { text: "Tout s'est passé exactement comme prévu, sans surprise.", name: "Sophie R.", role: "Directrice Marketing" },
     { text: "Une expérience simple, rapide et efficace.", name: "Julien T.", role: "Product Owner" },
   ];
-  
+
    ngAfterViewInit(): void {
-        animateTestimonials();
-      };
+     animateTestimonials();
+  };
 }

@@ -17,7 +17,7 @@ export class ServiceDetailComponent implements OnInit, AfterViewInit {
     id: 0,
     title: 'Salle',
     desc: 'Personnel de salle formé pour assurer un service fluide et professionnel.',
-    image: 'assets/images/carré-salle.jpeg',
+    image: 'assets/images/service-salle.jpg',
     link: 'salle',
 
     details: [
@@ -57,7 +57,7 @@ export class ServiceDetailComponent implements OnInit, AfterViewInit {
     id: 1,
     title: 'Cuisine',
     desc: 'Du personnel de cuisine formé pour garantir un service efficace en restaurant et en événementiel.',
-    image: 'assets/images/carré-cuisine.jpeg',
+    image: 'assets/images/service-cuisine.jpg',
     link: 'cuisine',
 
     details: [
@@ -97,7 +97,7 @@ export class ServiceDetailComponent implements OnInit, AfterViewInit {
     id: 2,
     title: 'Accueil & Services complémentaires',
     desc: 'Une gestion 360 de l’accueil pour vos événements et établissements.',
-    image: 'assets/images/carré-acceuil.png',
+    image: 'assets/images/service-accueil.jpg',
     link: 'accueil',
 
     details: [

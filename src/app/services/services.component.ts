@@ -25,27 +25,27 @@ export class ServicesComponent implements AfterViewInit {
     id: 0,
     title: 'Salle',
     desc: 'Personnel de salle formé pour assurer un service fluide et professionnel.',
-    image: 'assets/images/carré-salle.jpeg',
+    image: 'assets/images/service-salle.jpg',
     link: 'salle'
   },
   {
     id: 1,
     title: 'Cuisine',
     desc: 'Du personnel de cuisine formé pour garantir un service efficace en restaurant et en événementiel.',
-    image: 'assets/images/carré-cuisine.jpeg',
+    image: 'assets/images/service-cuisine.jpg',
     link: 'cuisine'
   },
   {
     id: 2,
     title: 'Accueil',
     desc: 'Personnel de salle expérimenté pour vos réceptions et événements.',
-    image: 'assets/images/carré-acceuil.png',
+    image: 'assets/images/service-accueil.jpg',
     link: 'accueil'
   },
   {
     id: 3,
     title: 'Organisation & process',
-    desc: 'Une gestion simple et structurée de vos demandes de personnel, de la prise en charge jusqu’au déroulement de la prestation.',
+    desc: 'Une gestion simple et structurée de vos demandes de personnel.',
     image: 'assets/images/carré-prestation.png',
     link: 'prestation'
   },
@@ -55,14 +55,7 @@ export class ServicesComponent implements AfterViewInit {
     desc: 'Une logistique efficace pour la mise en place et le bon déroulement de vos événements.',
     image: 'assets/images/carré-logistique.png',
     link: 'logistique'
-  },
-  {
-    id: 5,
-    title: 'Partenariat',
-    desc: 'Des collaborations solides et durables avec nos partenaires.',
-    image: 'assets/images/carré-partenariat.png',
-    link: 'partenariat'
-  },
+  }
 ];
   
   @ViewChild('events') events!: ElementRef;

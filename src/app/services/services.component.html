@@ -59,10 +59,14 @@
 
     <!-- Intro -->
     <div class="services-header max-w-3xl mx-auto text-center mb-12">
-      <div class="text-[#8a7d6a] uppercase text-sm tracking-widest mb-2">Nos Services</div>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-light text-[#f0ede8] mb-4">
+      <div class="text-gradient-gold uppercase text-sm tracking-widest mb-2">
+        Nos Services
+      </div>
+
+      <h2 class="text-2xl sm:text-4xl md:text-5xl font-light text-[#f0ede8] mb-4">
         Simplifiez la gestion de votre personnel
       </h2>
+
       <p class="text-[#9a9088] text-base sm:text-lg italic">
         Nous mettons à disposition du personnel qualifié et professionnel pour l’HORECA et l’événementiel.
       </p>
@@ -70,31 +74,71 @@
 
     <!-- Grid Services -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-      <div *ngFor="let service of services" class="service-card relative h-72 overflow-hidden rounded-3xl shadow-lg">
+
+      <!-- SERVICES -->
+      <div
+        *ngFor="let service of services"
+        class="service-card group relative aspect-[4/5] overflow-hidden rounded-xl shadow-lg hover:scale-[1.02]"
+      >
 
         <!-- Background image -->
         <div
-          class="absolute inset-0 bg-center bg-cover"
+          class="absolute inset-0 bg-center bg-cover scale-100 group-hover:scale-105"
           [ngStyle]="{'background-image': 'url(' + service.image + ')'}">
         </div>
 
         <!-- Overlay -->
-        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/60"></div>
 
         <!-- Content -->
         <div class="absolute inset-0 p-6 flex flex-col justify-end text-left">
-          <h3 class="text-[#f0ede8] text-2xl font-light mb-2 uppercase">{{ service.title }}</h3>
-          <p class="text-[#f0ede8]/90 text-sm mb-4 italic">{{ service.desc }}</p>
-           <a [routerLink]="['/services', service.link]" 
-               class="rounded-lg border border-white bg-[#0a0a0a] px-10 py-3 font-meduim uppercase text-white text-center hover:bg-gray-200 hover:text-black focus:bg-gray-200 focus:text-black
-          active:bg-gray-200 active:text-black">
-              En savoir plus
-            </a>
+
+          <h3 class="text-[#f0ede8] text-2xl font-light mb-2 uppercase">
+            {{ service.title }}
+          </h3>
+
+          <p class="text-[#f0ede8]/90 text-sm mb-4 italic">
+            {{ service.desc }}
+          </p>
+
+          <a
+            [routerLink]="['/services', service.link]"
+            class="rounded-lg border border-white bg-[#0a0a0a] px-10 py-3 font-medium uppercase text-white text-center hover:bg-gray-200 hover:text-black focus:bg-gray-200 focus:text-black active:bg-gray-200 active:text-black"
+          >
+            En savoir plus
+          </a>
+
+        </div>
+      </div>
+
+      <!-- CTA CARD -->
+      <a
+        [routerLink]="['/postulez']"
+        class="group relative aspect-[4/5] overflow-hidden rounded-xl border border-[var(--gold)]/30 bg-gradient-to-br from-[var(--gold)]/10 to-transparent flex flex-col items-center justify-center text-center p-8 hover:scale-[1.02]"
+      >
+
+        <!-- cercle icon -->
+        <div
+          class="w-16 h-16 rounded-full border border-[var(--gold)]/40 flex items-center justify-center mb-6 text-[var(--gold)] group-hover:scale-110"
+        >
+          →
         </div>
 
-      </div>
-    </div>
+        <h3 class="text-3xl font-serif text-gradient-gold mb-3">
+          Postulez chez nous
+        </h3>
 
+        <p class="text-sm text-white/60 mb-6">
+          Rejoignez notre vivier de talents en 4 étapes.
+        </p>
+
+        <span class="text-xs tracking-[0.25em] uppercase text-[var(--gold)]">
+          Candidater →
+        </span>
+
+      </a>
+
+    </div>
   </div>
 </section>
 <section class="bg-[#0d0d0d] py-16">
@@ -103,19 +147,19 @@
     <!-- Événements -->
     <div class="stat border-b sm:border-b-0 sm:border-r border-[#1a1a1a] pb-6 sm:pb-0 sm:pr-6">
       <div #events class="text-4xl sm:text-5xl font-light text-[#f0ede8]">0</div>
-      <div class="text-xs sm:text-sm uppercase text-[#8a7d6a] tracking-widest mt-2">Événements</div>
+      <div class="text-xs sm:text-sm uppercase text-gradient-gold tracking-widest mt-2">Événements</div>
     </div>
 
     <!-- Profils actifs -->
     <div class="stat border-b sm:border-b-0 sm:border-r border-[#1a1a1a] pb-6 sm:pb-0 sm:px-6">
       <div #profiles class="text-4xl sm:text-5xl font-light text-[#f0ede8]">0</div>
-      <div class="text-xs sm:text-sm uppercase text-[#8a7d6a] tracking-widest mt-2">Profils actifs</div>
+      <div class="text-xs sm:text-sm uppercase text-gradient-gold tracking-widest mt-2">Profils actifs</div>
     </div>
 
     <!-- Délai moyen -->
     <div class="stat sm:pl-6">
       <div #delay class="text-4xl sm:text-5xl font-light text-[#f0ede8]">0</div>
-      <div class="text-xs sm:text-sm uppercase text-[#8a7d6a] tracking-widest mt-2">Délai moyen (h)</div>
+      <div class="text-xs sm:text-sm uppercase text-gradient-gold tracking-widest mt-2">Délai moyen (h)</div>
     </div>
 
   </div>
