@@ -50,35 +50,86 @@
 </nav>
 
 <!-- Mobile menu overlay -->
-<div *ngIf="ismobileMenuOpen" class="fixed inset-0 z-50 bg-[#0d0d0d] flex flex-col justify-between">
+<div *ngIf="ismobileMenuOpen"
+     class="fixed inset-0 z-50 flex flex-col justify-between
+            bg-gradient-to-br from-[#0a0a0a] via-[#0d0d0d] to-[#050505]">
 
-  <!-- Header mobile: logo + close -->
+  <!-- HEADER -->
   <div class="flex justify-between items-center px-6 pt-6">
-    <img src="assets/images/LGS.svg" alt="logo brand" class="w-28 h-auto cursor-pointer" (click)="toggleMobileMenu(); scrollToSection('hero')">
-    <button (click)="toggleMobileMenu()" class="text-white text-3xl font-bold">&times;</button>
+    <img src="assets/images/LGS.svg"
+         alt="logo brand"
+         class="w-28 h-auto cursor-pointer"
+         (click)="toggleMobileMenu(); scrollToSection('hero')">
+
+    <button (click)="toggleMobileMenu()"
+      class="text-white text-4xl leading-none hover:text-[var(--gold)] transition">
+      &times;
+    </button>
   </div>
 
-  <!-- Menu items -->
-  <nav class="flex flex-col items-center flex-1 justify-center space-y-8 text-white text-lg">
-    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
-       (click)="scrollToSection('hero'); toggleMobileMenu()">Accueil</a>
-    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
-       (click)="scrollToSection('services'); toggleMobileMenu()">Services</a>
-    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
-       (click)="scrollToSection('process'); toggleMobileMenu()">Process</a>
-    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
-       (click)="scrollToSection('testimony'); toggleMobileMenu()">Témoignages</a>
-    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
-       (click)="scrollToSection('history'); toggleMobileMenu()">À propos</a>
-    <a class="uppercase font-light hover:text-[#8a7d6a] transition-colors duration-200"
-       (click)="scrollToSection('contact'); toggleMobileMenu()">Contact</a>
+  <!-- MENU -->
+  <nav class="flex flex-col items-center flex-1 justify-center space-y-7 text-lg">
+
+    <a class="uppercase font-light tracking-[0.25em] text-white
+              hover:text-[var(--gold)] transition"
+       (click)="scrollToSection('hero'); toggleMobileMenu()">
+      Accueil
+    </a>
+
+    <a class="uppercase font-light tracking-[0.25em] text-white
+              hover:text-[var(--gold)] transition"
+       (click)="scrollToSection('services'); toggleMobileMenu()">
+      Services
+    </a>
+
+    <a class="uppercase font-light tracking-[0.25em] text-white
+              hover:text-[var(--gold)] transition"
+       (click)="scrollToSection('process'); toggleMobileMenu()">
+      Process
+    </a>
+
+    <a class="uppercase font-light tracking-[0.25em] text-white
+              hover:text-[var(--gold)] transition"
+       (click)="scrollToSection('testimony'); toggleMobileMenu()">
+      Témoignages
+    </a>
+
+    <a class="uppercase font-light tracking-[0.25em] text-white
+              hover:text-[var(--gold)] transition"
+       (click)="scrollToSection('history'); toggleMobileMenu()">
+      À propos
+    </a>
+
+    <a class="uppercase font-light tracking-[0.25em] text-white
+              hover:text-[var(--gold)] transition"
+       (click)="scrollToSection('contact'); toggleMobileMenu()">
+      Contact
+    </a>
+
   </nav>
 
-  <!-- CTA buttons -->
-  <div class="flex flex-col px-6 pb-12 space-y-4">
+  <!-- CTA SECTION -->
+  <div class="px-6 pb-12 space-y-4">
+
+    <!-- POSTULER (gold like your form button) -->
+    <button
+      (click)="scrollToSection('contact'); toggleMobileMenu()"
+      class="w-full py-3 uppercase text-xs tracking-[0.25em]
+             bg-[var(--gold)] text-black rounded-sm
+             hover:opacity-90 transition">
+      Demande de devis
+    </button>
+
+    <!-- WhatsApp -->
     <a href="https://wa.me/32XXXXXXXXX" target="_blank"
-       class="w-full text-center rounded-lg bg-green-600 px-6 py-3 font-medium uppercase text-white hover:bg-green-500 transition">
-      Contacter via WhatsApp
+       class="w-full flex items-center justify-center gap-2
+              border border-white/10 text-white
+              py-3 rounded-sm uppercase text-xs tracking-[0.25em]
+              hover:border-[var(--gold)] hover:text-[var(--gold)]
+              transition">
+      <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+      WhatsApp
     </a>
+
   </div>
 </div>

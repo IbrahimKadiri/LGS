@@ -28,8 +28,8 @@ export class CareerComponent {
     "Commis de cuisine",
     "Plongeur",
     "Hôte / hôtesse d'accueil",
-    "Régisseur technique",
-    "Manutentionnaire",
+    "Runner logistique",
+    "Autre",
   ];
 
   stepsLabels = ['Poste', 'Identité', 'Expérience', 'CV'];
