@@ -6,6 +6,7 @@
         ← Retour
         </a>
     </div>
+
   <!-- BG -->
   <div class="absolute inset-0 pointer-events-none">
     <div
@@ -113,6 +114,61 @@
 
              p-6 sm:p-10 lg:p-14"
     >
+
+      <!-- SUCCESS -->
+      <div *ngIf="done" class="text-center py-20">
+
+        <div
+          class="w-24 h-24 mx-auto mb-8
+                rounded-full
+                bg-[var(--gold)]/10
+                border border-[var(--gold)]/20
+                flex items-center justify-center"
+        >
+          <span class="text-4xl text-[var(--gold)]">✓</span>
+        </div>
+
+        <h2
+          class="text-3xl sm:text-4xl
+                font-light text-[#f5f2ee]
+                mb-5"
+        >
+          Candidature envoyée
+        </h2>
+
+        <p
+          class="max-w-xl mx-auto
+                text-[#8b8178]
+                leading-relaxed
+                text-base sm:text-lg"
+        >
+          Merci pour votre candidature.
+          Notre équipe reviendra vers vous rapidement après étude de votre profil.
+        </p>
+
+        <button
+          type="button"
+          (click)="resetForm()"
+          class="mt-10 px-6 py-3
+
+                rounded-xl
+
+                bg-[var(--gold)]
+                text-black
+
+                text-xs uppercase tracking-[0.25em]
+
+                hover:opacity-90
+
+                transition-all duration-300"
+        >
+          Envoyer une autre candidature
+        </button>
+
+      </div>
+
+      <!-- FORM -->
+      <div *ngIf="!done">
 
       <!-- STEP 1 -->
       <div *ngIf="step === 0">
@@ -304,20 +360,20 @@
       </div>
 
       <!-- STEP 4 -->
-    <div *ngIf="step === 3">
+      <div *ngIf="step === 3">
 
         <h2
-            class="text-2xl sm:text-3xl font-light text-[#f5f2ee] mb-8"
+          class="text-2xl sm:text-3xl font-light text-[#f5f2ee] mb-8"
         >
-            Votre CV
+          Votre CV
         </h2>
 
         <label
-            (dragover)="onDragOver($event)"
-            (dragleave)="onDragLeave($event)"
-            (drop)="onDrop($event)"
-            [class.border-gold]="isDragging"
-            class="group relative block
+          (dragover)="onDragOver($event)"
+          (dragleave)="onDragLeave($event)"
+          (drop)="onDrop($event)"
+          [class.border-gold]="isDragging"
+          class="group relative block
 
                 border-2 border-dashed
                 border-[var(--gold)]/20
@@ -339,90 +395,89 @@
                 transition-all duration-300"
         >
 
-            <!-- INPUT -->
-            <input
+          <!-- INPUT -->
+          <input
             type="file"
             accept=".pdf,.doc,.docx"
             class="hidden"
             (change)="onFileSelected($event)"
-            />
+          />
 
-            <!-- ICON -->
-            <div
+          <!-- ICON -->
+          <div
             class="w-16 h-16 mx-auto mb-5
 
-                    rounded-full
+                  rounded-full
 
-                    bg-[var(--gold)]/10
-                    border border-[var(--gold)]/20
+                  bg-[var(--gold)]/10
+                  border border-[var(--gold)]/20
 
-                    flex items-center justify-center"
-            >
+                  flex items-center justify-center"
+          >
 
             <lucide-icon
-                [img]="Upload"
-                class="w-7 h-7 text-[var(--gold)]"
+              [img]="Upload"
+              class="w-7 h-7 text-[var(--gold)]"
             ></lucide-icon>
 
-            </div>
+          </div>
 
-            <!-- EMPTY -->
-            <div *ngIf="!data.cv">
+          <!-- EMPTY -->
+          <div *ngIf="!data.cv">
 
             <p class="text-[#f5f2ee] text-base sm:text-lg mb-2">
-                Glissez votre CV ici
+              Glissez votre CV ici
             </p>
 
             <p class="text-[#8b8178] text-sm sm:text-base">
-                ou cliquez pour parcourir vos fichiers
+              ou cliquez pour parcourir vos fichiers
             </p>
 
             <p
-                class="mt-4 text-xs uppercase tracking-[0.25em]
+              class="mt-4 text-xs uppercase tracking-[0.25em]
                     text-[var(--gold)]/70"
             >
-                PDF · DOC · DOCX · 5MB max
+              PDF · DOC · DOCX · 5MB max
             </p>
 
-            </div>
+          </div>
 
-            <!-- FILE -->
-            <div *ngIf="data.cv">
+          <!-- FILE -->
+          <div *ngIf="data.cv">
 
             <p
-                class="text-[var(--gold)]
+              class="text-[var(--gold)]
                     text-base sm:text-lg
                     font-medium mb-2"
             >
-                {{ data.cv.name }}
+              {{ data.cv.name }}
             </p>
 
             <p class="text-[#8b8178] text-sm">
-                Cliquez pour modifier le fichier
+              Cliquez pour modifier le fichier
             </p>
 
-            </div>
+          </div>
 
         </label>
 
-    </div>
+      </div>
 
-
-        <!-- ACTIONS -->
-        <div
+      <!-- ACTIONS -->
+      <div
         class="flex items-center justify-between
 
-                mt-10 pt-6
+              mt-10 pt-6
 
-                border-t border-white/10"
-        >
+              border-t border-white/10"
+      >
 
         <!-- RETOUR -->
         <button
-            type="button"
-            (click)="prev()"
-            [disabled]="step === 0"
-            class="inline-flex items-center gap-2
+          type="button"
+          (click)="prev()"
+          [disabled]="step === 0"
+          class="inline-flex items-center gap-2
 
                 px-5 sm:px-6 py-3
 
@@ -442,23 +497,22 @@
                 transition-all duration-300"
         >
 
-            <lucide-icon
+          <lucide-icon
             [img]="ChevronLeft"
             class="w-4 h-4"
-            ></lucide-icon>
+          ></lucide-icon>
 
-            Retour
+          Retour
 
         </button>
 
-
         <!-- NEXT -->
         <button
-            *ngIf="step < 3"
-            type="button"
-            (click)="next()"
-            [disabled]="!canNext()"
-            class="inline-flex items-center gap-2
+          *ngIf="step < 3"
+          type="button"
+          (click)="next()"
+          [disabled]="!canNext()"
+          class="inline-flex items-center gap-2
 
                 px-6 sm:px-7 py-3
 
@@ -476,23 +530,22 @@
                 transition-all duration-300"
         >
 
-            Suivant
+          Suivant
 
-            <lucide-icon
+          <lucide-icon
             [img]="ChevronRight"
             class="w-4 h-4"
-            ></lucide-icon>
+          ></lucide-icon>
 
         </button>
 
-
         <!-- SUBMIT -->
         <button
-            *ngIf="step === 3"
-            type="submit"
-            (click)="submit()"
-            [disabled]="!canNext()"
-            class="px-6 sm:px-8 py-3
+          *ngIf="step === 3"
+          type="submit"
+          (click)="submit()"
+          [disabled]="!canNext() || sending"
+          class="px-6 sm:px-8 py-3
 
                 text-xs uppercase tracking-[0.25em]
 
@@ -507,11 +560,12 @@
 
                 transition-all duration-300"
         >
-            Envoyer
+          {{ sending ? 'Envoi en cours...' : 'Envoyer' }}
         </button>
 
-        </div>
+      </div>
 
+      </div>
 
     </div>
 

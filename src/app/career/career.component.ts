@@ -2,11 +2,24 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ChevronLeft, Upload, ChevronRight, LucideAngularModule } from 'lucide-angular';
+import {
+  ChevronLeft,
+  Upload,
+  ChevronRight,
+  LucideAngularModule
+} from 'lucide-angular';
+
+import { supabase } from '../core/supabase.client';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-career',
-  imports: [CommonModule, FormsModule, LucideAngularModule, RouterModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    LucideAngularModule,
+    RouterModule
+  ],
   templateUrl: './career.component.html',
   styleUrl: './career.component.css'
 })
@@ -15,9 +28,15 @@ export class CareerComponent {
   readonly ChevronRight = ChevronRight;
   readonly Upload = Upload;
   readonly ChevronLeft = ChevronLeft;
+
   step = 0;
   done = false;
   isDragging = false;
+
+  loadingUpload = false;
+  sending = false;
+
+  cvUrl: string | null = null;
 
   postes = [
     "Commis de salle",
@@ -85,44 +104,180 @@ export class CareerComponent {
   }
 
   onFileSelected(event: any) {
+
     const file = event.target.files[0];
 
-    if (file) {
-      this.data.cv = file;
-    }
-  }
+    if (!file) return;
 
-  submit() {
-    this.done = true;
-
-    console.log(this.data);
-
-    // future:
-    // envoyer API
-    // firebase
-    // supabase
-    // email
+    this.data.cv = file;
   }
 
   onDragOver(event: DragEvent) {
-  event.preventDefault();
-  this.isDragging = true;
-}
-
-onDragLeave(event: DragEvent) {
-  event.preventDefault();
-  this.isDragging = false;
-}
-
-onDrop(event: DragEvent) {
-  event.preventDefault();
-
-  this.isDragging = false;
-
-  const files = event.dataTransfer?.files;
-
-  if (files && files.length > 0) {
-    this.data.cv = files[0];
+    event.preventDefault();
+    this.isDragging = true;
   }
-}
+
+  onDragLeave(event: DragEvent) {
+    event.preventDefault();
+    this.isDragging = false;
+  }
+
+  onDrop(event: DragEvent) {
+
+    event.preventDefault();
+
+    this.isDragging = false;
+
+    const files = event.dataTransfer?.files;
+
+    if (files && files.length > 0) {
+      this.data.cv = files[0];
+    }
+  }
+
+  async uploadCV(file: File): Promise<string | null> {
+
+    try {
+
+      this.loadingUpload = true;
+
+      const cleanName = file.name.replace(/\s/g, '-');
+
+      const fileName = `${Date.now()}-${cleanName}`;
+
+      const { error } = await supabase
+        .storage
+        .from('cvs')
+        .upload(fileName, file);
+
+      if (error) {
+
+        console.error('Erreur upload CV:', error);
+
+        this.loadingUpload = false;
+
+        return null;
+      }
+
+      const { data } = supabase
+        .storage
+        .from('cvs')
+        .getPublicUrl(fileName);
+
+      this.loadingUpload = false;
+
+      return data.publicUrl;
+
+    } catch (err) {
+
+      console.error(err);
+
+      this.loadingUpload = false;
+
+      return null;
+    }
+  }
+
+  async sendEmail(cvUrl: string) {
+
+    try {
+
+      const response = await emailjs.send(
+        'service_v4f79s4',
+        'template_5e4wehd',
+        {
+          poste: this.data.poste,
+          first_name: this.data.firstName,
+          last_name: this.data.lastName,
+          email: this.data.email,
+          phone: this.data.phone,
+          city: this.data.city,
+          availability: this.data.availability,
+          years: this.data.years,
+          motivation: this.data.motivation,
+          cv_link: cvUrl
+        },
+        '7F4zacMm0xX_RdPvT'
+      );
+
+      console.log('MAIL ENVOYÉ', response);
+
+      return true;
+
+    } catch (error) {
+
+      console.error('Erreur EmailJS :', error);
+
+      return false;
+    }
+  }
+
+  async submit() {
+
+    if (!this.data.cv) return;
+
+    try {
+
+      this.sending = true;
+
+      // 1. UPLOAD CV
+      const cvUrl = await this.uploadCV(this.data.cv);
+
+      if (!cvUrl) {
+
+        console.error('Erreur upload CV');
+
+        this.sending = false;
+
+        return;
+      }
+
+      // 2. ENVOI MAIL
+      const success = await this.sendEmail(cvUrl);
+
+      if (!success) {
+
+        console.error('Erreur envoi email');
+
+        this.sending = false;
+
+        return;
+      }
+
+      // SUCCESS
+      this.done = true;
+
+      this.sending = false;
+
+    } catch (err) {
+
+      console.error(err);
+
+      console.error('Une erreur est survenue');
+
+      this.sending = false;
+    }
+  }
+
+  resetForm() {
+
+    this.done = false;
+
+    this.step = 0;
+
+    this.data = {
+      poste: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      city: '',
+      years: '',
+      availability: '',
+      motivation: '',
+      cv: null
+    };
+
+    this.cvUrl = null;
+  }
 }

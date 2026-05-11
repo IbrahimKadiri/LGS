@@ -18,6 +18,8 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@emailjs/browser": "^4.4.1",
+    "@supabase/supabase-js": "^2.105.4",
     "@tailwindcss/postcss": "^4.1.14",
     "gsap": "^3.13.0",
     "lucide-angular": "^1.0.0",
