@@ -491,6 +491,7 @@
         <button
             *ngIf="step === 3"
             type="submit"
+            (click)="submit()"
             [disabled]="!canNext()"
             class="px-6 sm:px-8 py-3
 

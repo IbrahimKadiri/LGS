@@ -29,25 +29,25 @@ export class ProcessComponent implements AfterViewInit  {
       number: '1',
       icon: this.Search,
       title: 'Votre demande',
-      desc: 'Nous analysons votre demande immédiatement. Les demandes doivent être effectuées au minimum 24 heures à l’avance. Une réponse vous est apportée dans l’heure.'
+      desc: 'Demande envoyée minimum 24h à l’avance. Réponse rapide dans l’heure.'
     },
     {
       number: '2',
       icon: this.Users,
       title: 'Briefing',
-      desc: 'Nous sélectionnons le personnel adapté. Un briefing complet est réalisé. Le code vestimentaire est communiqué. Les exigences de l’établissement ou de l’événement sont précisées.'
+      desc: 'Sélection du personnel adapté. Briefing et consignes communiqués avant mission.'
     },
     {
       number: '3',
       icon: this.Sparkles,
       title: 'Arrivée sur site',
-      desc: 'Le personnel arrive à l’heure convenue. Il se présente directement au responsable sur place. La prise de poste se fait sans délai.'
+      desc: 'Le personnel se présente directement au responsable. Prise de poste rapide et efficace.'
     },
     {
       number: '4',
       icon: this.MessageCircle,
       title: 'Suivi et collaboration',
-      desc: 'Nous assurons un suivi après chaque mission. Les retours sont collectés afin de garantir un service constant et qualitatif. La facturation est effectuée de manière mensuelle. Des conditions préférentielles peuvent être appliquées en fonction du volume et de la régularité des missions.'
+      desc: 'Suivi qualité après chaque mission. Conditions adaptées selon le volume et la régularité.'
     }
   ];
 

@@ -2,16 +2,24 @@
 <section class="bg-[#0d0d0d] py-24 contact-section">
   <div class="max-w-7xl mx-auto px-6">
 
-    <!-- Card Container -->
-    <div class="bg-[#0a0a0a] rounded-xl shadow-lg p-12 lg:p-16">
-      
-      <!-- Intro -->
-      <div class="max-w-2xl mb-16 contact-header mx-auto text-center">
-        <div class="text-gradient-gold uppercase text-sm tracking-widest mb-2">
+    <!-- CARD -->
+    <div class="rounded-[32px]
+
+             border border-[var(--gold)]/10
+
+             bg-gradient-to-br
+             from-[rgba(184,155,114,0.10)]
+             via-[#111111]
+             to-[#0a0a0a]
+ p-8 sm:p-12 lg:p-16 shadow-[0_0_40px_rgba(0,0,0,0.4)]">
+
+      <!-- INTRO -->
+      <div class="max-w-2xl mb-14 mx-auto text-center">
+        <div class="text-gradient-gold uppercase text-xs tracking-[0.35em] mb-3">
           Contact
         </div>
 
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-light text-[#f0ede8] mb-6 leading-tight">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-light text-[#f0ede8] mb-4 leading-tight">
           Parlons de<br>votre événement
         </h2>
 
@@ -20,51 +28,70 @@
         </p>
       </div>
 
-      <!-- Grid -->
+      <!-- GRID -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
         <!-- INFOS -->
-        <div class="space-y-8 contact-infos text-[#c0b8b0]">
+        <div class="space-y-10 text-[#c0b8b0]">
 
           <div>
-            <div class="text-gradient-gold text-xs uppercase tracking-widest mb-2">Téléphone</div>
-            <div class="text-base">+32 2 000 00 00</div>
+            <div class="text-[var(--gold)] text-xs uppercase tracking-[0.3em] mb-2">
+              Téléphone
+            </div>
+            <div class="text-base text-[#e7e2dc]">+32 2 000 00 00</div>
           </div>
 
           <div>
-            <div class="text-gradient-gold text-xs uppercase tracking-widest mb-2">Email</div>
-            <a href="mailto:contact@lgs-events.be" class="text-base hover:text-[#8a7d6a] transition">
+            <div class="text-[var(--gold)] text-xs uppercase tracking-[0.3em] mb-2">
+              Email
+            </div>
+            <a href="mailto:contact@lgs-events.be"
+               class="text-base text-[#e7e2dc] hover:text-[var(--gold)] transition">
               contact&#64;lgs-events.be
             </a>
           </div>
 
           <div>
-            <div class="text-gradient-gold text-xs uppercase tracking-widest mb-2">Disponibilité</div>
-            <div class="text-base">
+            <div class="text-[var(--gold)] text-xs uppercase tracking-[0.3em] mb-2">
+              Disponibilité
+            </div>
+            <div class="text-base text-[#e7e2dc]">
               Lun – Ven, 9h – 18h<br>Urgences 7j/7
             </div>
           </div>
 
         </div>
 
-        <!-- FORMULAIRE -->
-        <form class="flex flex-col gap-6 contact-form">
+        <!-- FORM -->
+        <form class="flex flex-col gap-6">
 
-          <!-- Nom + Société -->
+          <!-- ROW 1 -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <input type="text" placeholder="Nom" class="input-style">
-            <input type="text" placeholder="Société" class="input-style">
+            <input type="text" placeholder="Nom"
+              class="bg-[#0b0b0b] border border-white/10 rounded-md px-4 py-3 text-sm text-[#f0ede8]
+              focus:border-[var(--gold)] focus:outline-none">
+
+            <input type="text" placeholder="Société"
+              class="bg-[#0b0b0b] border border-white/10 rounded-md px-4 py-3 text-sm text-[#f0ede8]
+              focus:border-[var(--gold)] focus:outline-none">
           </div>
 
-          <!-- Email + Téléphone -->
+          <!-- ROW 2 -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <input type="email" placeholder="Email professionnel" class="input-style">
-            <input type="text" placeholder="Téléphone" class="input-style">
+            <input type="email" placeholder="Email professionnel"
+              class="bg-[#0b0b0b] border border-white/10 rounded-md px-4 py-3 text-sm text-[#f0ede8]
+              focus:border-[var(--gold)] focus:outline-none">
+
+            <input type="text" placeholder="Téléphone"
+              class="bg-[#0b0b0b] border border-white/10 rounded-md px-4 py-3 text-sm text-[#f0ede8]
+              focus:border-[var(--gold)] focus:outline-none">
           </div>
 
-          <!-- Type + Nb personnes -->
+          <!-- ROW 3 -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <select class="input-style">
+            <select
+              class="bg-[#0b0b0b] border border-white/10 rounded-md px-4 py-3 text-sm text-[#f0ede8]
+              focus:border-[var(--gold)] focus:outline-none">
               <option>Type d'événement</option>
               <option>Corporate</option>
               <option>Mariage</option>
@@ -72,28 +99,38 @@
               <option>Privé</option>
             </select>
 
-            <input type="text" placeholder="Nombre de personnes" class="input-style">
+            <input type="text" placeholder="Nombre de personnes"
+              class="bg-[#0b0b0b] border border-white/10 rounded-md px-4 py-3 text-sm text-[#f0ede8]
+              focus:border-[var(--gold)] focus:outline-none">
           </div>
 
-          <!-- Date + Lieu -->
+          <!-- ROW 4 -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <input type="text" placeholder="Date prévue" class="input-style">
-            <input type="text" placeholder="Lieu" class="input-style">
+            <input type="text" placeholder="Date prévue"
+              class="bg-[#0b0b0b] border border-white/10 rounded-md px-4 py-3 text-sm text-[#f0ede8]
+              focus:border-[var(--gold)] focus:outline-none">
+
+            <input type="text" placeholder="Lieu"
+              class="bg-[#0b0b0b] border border-white/10 rounded-md px-4 py-3 text-sm text-[#f0ede8]
+              focus:border-[var(--gold)] focus:outline-none">
           </div>
 
-          <!-- Message -->
-          <textarea placeholder="Décrivez votre besoin..." class="input-style h-28 resize-none"></textarea>
+          <!-- MESSAGE -->
+          <textarea placeholder="Décrivez votre besoin..."
+            class="bg-[#0b0b0b] border border-white/10 rounded-md px-4 py-3 text-sm text-[#f0ede8] h-28 resize-none
+            focus:border-[var(--gold)] focus:outline-none"></textarea>
 
-          <!-- CTA -->
+          <!-- CTA (POSTULER STYLE IDENTIQUE) -->
           <button type="submit"
-            class="rounded-lg border border-white bg-[#0d0d0d] px-10 py-3 font-medium uppercase text-white text-center hover:bg-gray-200 hover:text-black focus:bg-gray-200 focus:text-black active:bg-gray-200 active:text-black">
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 text-xs uppercase tracking-[0.2em]
+            bg-[var(--gold)] text-black rounded-sm hover:opacity-90 transition">
             Envoyer la demande
           </button>
 
-          <!-- WhatsApp -->
+          <!-- SECOND CTA -->
           <div class="flex items-center gap-3 mt-2 cursor-pointer group">
             <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-            <div class="text-gradient-gold text-xs tracking-widest uppercase group-hover:text-[#8a7d6a] transition">
+            <div class="text-[var(--gold)] text-xs tracking-[0.25em] uppercase group-hover:opacity-70 transition">
               Contacter via WhatsApp
             </div>
           </div>
