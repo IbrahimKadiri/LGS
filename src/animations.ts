@@ -269,33 +269,66 @@ export function animateHistoire() {
   }, "-=0.4");
 }
 
-// ---------------------
-// CONTACT
-// ---------------------
 export function animateContact() {
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: "#contact",
+      trigger: ".contact-section",
       start: "top 80%",
       toggleActions: "play none none reset",
     }
   });
 
-  tl.from(".contact-header > *", {
+  // INTRO (titre + texte centré)
+  tl.from(".contact-section .max-w-2xl > *", {
     opacity: 0,
     y: 40,
-    stagger: 0.15,
+    duration: 0.8,
+    ease: "power3.out",
+    stagger: 0.12,
   })
-  .from(".contact-infos > *", {
-    opacity: 0,
-    y: 30,
-  }, "-=0.3")
-  .from(".contact-form > *", {
-    opacity: 0,
-    y: 30,
-  }, "-=0.4");
-}
 
+  // INFOS (colonne gauche)
+  .from(".contact-section .space-y-10 > div", {
+    opacity: 0,
+    x: -25,
+    duration: 0.6,
+    ease: "power2.out",
+    stagger: 0.15,
+  }, "-=0.4")
+
+  // FORM BLOCK (entrée globale)
+  .from(".contact-section form", {
+    opacity: 0,
+    y: 30,
+    duration: 0.7,
+    ease: "power3.out",
+  }, "-=0.5")
+
+  // INPUTS + SELECT + TEXTAREA (cascade propre)
+  .from(".contact-section form input, .contact-section form select, .contact-section form textarea", {
+    opacity: 0,
+    y: 18,
+    duration: 0.45,
+    ease: "power2.out",
+    stagger: 0.06,
+  }, "-=0.3")
+
+  // CTA bouton gold
+  .from(".contact-section form button", {
+    opacity: 0,
+    scale: 0.95,
+    duration: 0.5,
+    ease: "back.out(1.6)",
+  }, "-=0.2")
+
+  // WhatsApp CTA
+  .from(".contact-section .group", {
+    opacity: 0,
+    y: 10,
+    duration: 0.4,
+    ease: "power2.out",
+  }, "-=0.25");
+}
 // ---------------------
 // FOOTER
 // ---------------------
