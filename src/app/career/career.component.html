@@ -1,0 +1,520 @@
+<section class="relative min-h-screen bg-[#0a0a0a] pt-32 pb-24 px-6 overflow-hidden">
+
+    <div class="absolute top-6 left-6 z-20">
+        <a [routerLink]="['/']" fragment="services"
+            class="text-[var(--gold)] border-b border-[#8a7d6a] text-sm uppercase tracking-widest hover:text-white hover:border-white transition">
+        ← Retour
+        </a>
+    </div>
+  <!-- BG -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2
+             w-[700px] h-[700px]
+             bg-[var(--gold)]/5 blur-3xl rounded-full"
+    ></div>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto">
+
+    <!-- HEADER -->
+    <div class="text-center mb-16">
+
+      <div class="text-gradient-gold uppercase tracking-[0.4em] text-xs mb-5">
+        Carrières
+      </div>
+
+      <h1
+        class="text-5xl sm:text-6xl lg:text-7xl
+               font-light text-[#f5f2ee]
+               leading-tight mb-6"
+      >
+        Postulez chez
+        <span class="text-[var(--gold)]">LGS</span>
+      </h1>
+
+      <p
+        class="max-w-2xl mx-auto
+               text-[#8b8178]
+               text-base sm:text-lg
+               leading-relaxed"
+      >
+        Rejoignez notre vivier de talents et intégrez des équipes formées
+        pour l’événementiel, l’horeca et les prestations premium.
+      </p>
+
+    </div>
+
+    <!-- STEPPER HORIZONTAL RESPONSIVE -->
+    <div class="flex justify-center mb-12 px-2 sm:px-0">
+
+    <div class="flex items-center justify-center w-full max-w-3xl">
+
+        <ng-container *ngFor="let label of stepsLabels; let i = index">
+
+        <div class="flex items-center flex-1 sm:flex-none justify-center">
+
+            <!-- STEP -->
+            <div class="flex flex-col items-center">
+
+            <div
+                class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border flex items-center justify-center
+                    text-[10px] sm:text-xs font-medium transition-all duration-300"
+
+                [ngClass]="{
+                'bg-[var(--gold)] border-[var(--gold)] text-black': i < step,
+                'border-[var(--gold)] text-[var(--gold)]': i === step,
+                'border-white/20 text-[#8b8178]': i > step
+                }"
+            >
+                {{ i < step ? '✓' : (i + 1) }}
+            </div>
+
+            <div
+                class="mt-1 text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] text-center whitespace-nowrap"
+                [ngClass]="{
+                'text-[var(--gold)]': i <= step,
+                'text-[#8b8178]': i > step
+                }"
+            >
+                {{ label }}
+            </div>
+
+            </div>
+
+            <!-- LINE (HIDDEN ON MOBILE) -->
+            <div
+            *ngIf="i < stepsLabels.length - 1"
+            class="hidden sm:block flex-1 sm:flex-none w-6 sm:w-10 md:w-14 h-px mx-1 sm:mx-3"
+            [ngClass]="i < step ? 'bg-[var(--gold)]' : 'bg-white/10'"
+            ></div>
+
+        </div>
+
+        </ng-container>
+
+    </div>
+
+    </div>
+
+    <!-- FORM CARD -->
+    <div
+      class="relative max-w-4xl mx-auto
+
+             rounded-[32px]
+
+             border border-[var(--gold)]/10
+
+             bg-gradient-to-br
+             from-[rgba(184,155,114,0.10)]
+             via-[#111111]
+             to-[#0a0a0a]
+
+             backdrop-blur-xl
+
+             p-6 sm:p-10 lg:p-14"
+    >
+
+      <!-- STEP 1 -->
+      <div *ngIf="step === 0">
+
+        <h2
+          class="text-3xl sm:text-4xl
+                 font-light text-[#f5f2ee]
+                 mb-8"
+        >
+          Quel poste vous intéresse ?
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <button
+            *ngFor="let poste of postes"
+            type="button"
+            (click)="data.poste = poste"
+
+            class="text-left
+
+                   px-5 py-5
+
+                   rounded-2xl
+
+                   border
+
+                   transition-all duration-300"
+
+            [ngClass]="{
+              'border-[var(--gold)] bg-[var(--gold)]/10 text-[var(--gold)] shadow-[0_0_20px_rgba(184,155,114,0.08)]':
+                data.poste === poste,
+
+              'border-white/10 text-[#d6d0cb] hover:border-[var(--gold)]/30 hover:bg-white/[0.02]':
+                data.poste !== poste
+            }"
+          >
+            {{ poste }}
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- STEP 2 -->
+      <div *ngIf="step === 1">
+
+        <h2
+          class="text-3xl sm:text-4xl
+                 font-light text-[#f5f2ee]
+                 mb-8"
+        >
+          Vos coordonnées
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-5">
+
+          <div>
+            <label class="block text-[11px] uppercase tracking-[0.25em] text-[#8b8178] mb-3">
+              Prénom
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="data.firstName"
+              class="w-full bg-[#111111] border border-white/10 rounded-2xl px-5 py-4 text-[#f5f2ee] outline-none transition-all duration-300 focus:border-[var(--gold)]/50 focus:bg-[#151515]"
+            />
+          </div>
+
+          <div>
+            <label class="block text-[11px] uppercase tracking-[0.25em] text-[#8b8178] mb-3">
+              Nom
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="data.lastName"
+              class="w-full bg-[#111111] border border-white/10 rounded-2xl px-5 py-4 text-[#f5f2ee] outline-none transition-all duration-300 focus:border-[var(--gold)]/50 focus:bg-[#151515]"
+            />
+          </div>
+
+          <div>
+            <label class="block text-[11px] uppercase tracking-[0.25em] text-[#8b8178] mb-3">
+              Email
+            </label>
+
+            <input
+              type="email"
+              [(ngModel)]="data.email"
+              class="w-full bg-[#111111] border border-white/10 rounded-2xl px-5 py-4 text-[#f5f2ee] outline-none transition-all duration-300 focus:border-[var(--gold)]/50 focus:bg-[#151515]"
+            />
+          </div>
+
+          <div>
+            <label class="block text-[11px] uppercase tracking-[0.25em] text-[#8b8178] mb-3">
+              Téléphone
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="data.phone"
+              class="w-full bg-[#111111] border border-white/10 rounded-2xl px-5 py-4 text-[#f5f2ee] outline-none transition-all duration-300 focus:border-[var(--gold)]/50 focus:bg-[#151515]"
+            />
+          </div>
+
+          <div class="md:col-span-2">
+            <label class="block text-[11px] uppercase tracking-[0.25em] text-[#8b8178] mb-3">
+              Ville
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="data.city"
+              class="w-full bg-[#111111] border border-white/10 rounded-2xl px-5 py-4 text-[#f5f2ee] outline-none transition-all duration-300 focus:border-[var(--gold)]/50 focus:bg-[#151515]"
+            />
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- STEP 3 -->
+      <div *ngIf="step === 2">
+
+        <h2
+          class="text-3xl sm:text-4xl
+                 font-light text-[#f5f2ee]
+                 mb-8"
+        >
+          Votre expérience
+        </h2>
+
+        <div class="space-y-6">
+
+          <div>
+
+            <label class="block text-[11px] uppercase tracking-[0.25em] text-[#8b8178] mb-3">
+              Années d’expérience
+            </label>
+
+            <select
+              [(ngModel)]="data.years"
+              class="w-full bg-[#111111] border border-white/10 rounded-2xl px-5 py-4 text-[#f5f2ee] outline-none transition-all duration-300 focus:border-[var(--gold)]/50 focus:bg-[#151515]"
+            >
+              <option value="">Sélectionnez</option>
+              <option>Moins d'1 an</option>
+              <option>1 à 3 ans</option>
+              <option>3 à 5 ans</option>
+              <option>Plus de 5 ans</option>
+            </select>
+
+          </div>
+
+          <div>
+
+            <label class="block text-[11px] uppercase tracking-[0.25em] text-[#8b8178] mb-3">
+              Disponibilité
+            </label>
+
+            <select
+              [(ngModel)]="data.availability"
+              class="w-full bg-[#111111] border border-white/10 rounded-2xl px-5 py-4 text-[#f5f2ee] outline-none transition-all duration-300 focus:border-[var(--gold)]/50 focus:bg-[#151515]"
+            >
+              <option value="">Sélectionnez</option>
+              <option>Immédiate</option>
+              <option>Dans 2 semaines</option>
+              <option>Dans 1 mois</option>
+              <option>Ponctuelle / extras</option>
+            </select>
+
+          </div>
+
+          <div>
+
+            <label class="block text-[11px] uppercase tracking-[0.25em] text-[#8b8178] mb-3">
+              Motivation
+            </label>
+
+            <textarea
+              rows="5"
+              [(ngModel)]="data.motivation"
+              class="w-full bg-[#111111] border border-white/10 rounded-2xl px-5 py-4 text-[#f5f2ee] outline-none resize-none transition-all duration-300 focus:border-[var(--gold)]/50 focus:bg-[#151515]"
+            ></textarea>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- STEP 4 -->
+    <div *ngIf="step === 3">
+
+        <h2
+            class="text-2xl sm:text-3xl font-light text-[#f5f2ee] mb-8"
+        >
+            Votre CV
+        </h2>
+
+        <label
+            (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave($event)"
+            (drop)="onDrop($event)"
+            [class.border-gold]="isDragging"
+            class="group relative block
+
+                border-2 border-dashed
+                border-[var(--gold)]/20
+
+                hover:border-[var(--gold)]/50
+
+                rounded-3xl
+
+                p-8 sm:p-14
+
+                text-center
+
+                bg-[#111111]/70
+
+                backdrop-blur-md
+
+                cursor-pointer
+
+                transition-all duration-300"
+        >
+
+            <!-- INPUT -->
+            <input
+            type="file"
+            accept=".pdf,.doc,.docx"
+            class="hidden"
+            (change)="onFileSelected($event)"
+            />
+
+            <!-- ICON -->
+            <div
+            class="w-16 h-16 mx-auto mb-5
+
+                    rounded-full
+
+                    bg-[var(--gold)]/10
+                    border border-[var(--gold)]/20
+
+                    flex items-center justify-center"
+            >
+
+            <lucide-icon
+                [img]="Upload"
+                class="w-7 h-7 text-[var(--gold)]"
+            ></lucide-icon>
+
+            </div>
+
+            <!-- EMPTY -->
+            <div *ngIf="!data.cv">
+
+            <p class="text-[#f5f2ee] text-base sm:text-lg mb-2">
+                Glissez votre CV ici
+            </p>
+
+            <p class="text-[#8b8178] text-sm sm:text-base">
+                ou cliquez pour parcourir vos fichiers
+            </p>
+
+            <p
+                class="mt-4 text-xs uppercase tracking-[0.25em]
+                    text-[var(--gold)]/70"
+            >
+                PDF · DOC · DOCX · 5MB max
+            </p>
+
+            </div>
+
+            <!-- FILE -->
+            <div *ngIf="data.cv">
+
+            <p
+                class="text-[var(--gold)]
+                    text-base sm:text-lg
+                    font-medium mb-2"
+            >
+                {{ data.cv.name }}
+            </p>
+
+            <p class="text-[#8b8178] text-sm">
+                Cliquez pour modifier le fichier
+            </p>
+
+            </div>
+
+        </label>
+
+    </div>
+
+
+        <!-- ACTIONS -->
+        <div
+        class="flex items-center justify-between
+
+                mt-10 pt-6
+
+                border-t border-white/10"
+        >
+
+        <!-- RETOUR -->
+        <button
+            type="button"
+            (click)="prev()"
+            [disabled]="step === 0"
+            class="inline-flex items-center gap-2
+
+                px-5 sm:px-6 py-3
+
+                text-xs uppercase tracking-[0.25em]
+
+                border border-white/10
+
+                rounded-xl
+
+                text-[#d6d0c8]
+
+                hover:border-[var(--gold)]/30
+                hover:bg-[var(--gold)]/5
+
+                disabled:opacity-30
+
+                transition-all duration-300"
+        >
+
+            <lucide-icon
+            [img]="ChevronLeft"
+            class="w-4 h-4"
+            ></lucide-icon>
+
+            Retour
+
+        </button>
+
+
+        <!-- NEXT -->
+        <button
+            *ngIf="step < 3"
+            type="button"
+            (click)="next()"
+            [disabled]="!canNext()"
+            class="inline-flex items-center gap-2
+
+                px-6 sm:px-7 py-3
+
+                text-xs uppercase tracking-[0.25em]
+
+                rounded-xl
+
+                bg-[var(--gold)]
+                text-black
+
+                hover:opacity-90
+
+                disabled:opacity-30
+
+                transition-all duration-300"
+        >
+
+            Suivant
+
+            <lucide-icon
+            [img]="ChevronRight"
+            class="w-4 h-4"
+            ></lucide-icon>
+
+        </button>
+
+
+        <!-- SUBMIT -->
+        <button
+            *ngIf="step === 3"
+            type="submit"
+            [disabled]="!canNext()"
+            class="px-6 sm:px-8 py-3
+
+                text-xs uppercase tracking-[0.25em]
+
+                rounded-xl
+
+                bg-[var(--gold)]
+                text-black
+
+                hover:opacity-90
+
+                disabled:opacity-30
+
+                transition-all duration-300"
+        >
+            Envoyer
+        </button>
+
+        </div>
+
+
+    </div>
+
+  </div>
+
+</section>
